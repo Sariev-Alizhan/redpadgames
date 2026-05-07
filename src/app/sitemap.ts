@@ -26,6 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/press-kit`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE}/token`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE}/careers`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE}/cookie-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const gameRoutes: MetadataRoute.Sitemap = games.map((g) => ({

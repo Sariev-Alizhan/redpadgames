@@ -12,7 +12,7 @@ type FooterLink = { href: string; label: string; external?: boolean };
 
 const COL_STUDIO: ReadonlyArray<FooterLink> = [
   { href: "/about", label: "About" },
-  { href: "https://redpad.games/careers", label: "Careers", external: true },
+  { href: "/careers", label: "Careers" },
   { href: "/news", label: "News" },
   { href: "/contacts", label: "Contacts" },
   { href: "/press-kit", label: "Press kit" },
@@ -31,8 +31,8 @@ const COL_SUPPORT: ReadonlyArray<FooterLink> = [
 ];
 
 const COL_LEGAL: ReadonlyArray<FooterLink> = [
-  { href: "https://redpad.games/privacy-policy", label: "Privacy", external: true },
-  { href: "https://redpad.games/cookie-policy", label: "Cookies", external: true },
+  { href: "/privacy-policy", label: "Privacy" },
+  { href: "/cookie-policy", label: "Cookies" },
 ];
 
 export function Footer() {
@@ -61,6 +61,35 @@ export function Footer() {
         <FooterColumn title="Support" links={COL_SUPPORT} className="md:col-span-2" />
         <FooterColumn title="Legal" links={COL_LEGAL} className="md:col-span-2" />
       </div>
+
+      {/* Discord community callout */}
+      <a
+        href="https://discord.gg/rbh3eEV8Ka"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor="hover"
+        className="group mt-16 flex flex-col items-start gap-4 rounded-lg border border-divider bg-bg-elevated p-6 transition-colors hover:border-accent/40 sm:flex-row sm:items-center sm:justify-between sm:p-8"
+      >
+        <div className="flex items-center gap-4">
+          <span aria-hidden className="flex size-12 shrink-0 items-center justify-center rounded-full bg-accent text-text">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M19.27 5.33A19.69 19.69 0 0 0 14.4 4l-.22.42a18 18 0 0 0-5.4 0L8.55 4a19.69 19.69 0 0 0-4.86 1.33A20.74 20.74 0 0 0 .15 13.84a19.86 19.86 0 0 0 6.05 3.05l.51-.93a13 13 0 0 1-2.4-1.16l.59-.46a14 14 0 0 0 13.2 0l.6.46a13 13 0 0 1-2.41 1.16l.51.93a19.86 19.86 0 0 0 6.05-3.05 20.74 20.74 0 0 0-3.58-8.51zM8.52 13.2a2.18 2.18 0 0 1-2-2.32 2.18 2.18 0 0 1 2-2.31 2.18 2.18 0 0 1 2 2.31 2.18 2.18 0 0 1-2 2.32zm6.95 0a2.18 2.18 0 0 1-2-2.32 2.18 2.18 0 0 1 2-2.31 2.18 2.18 0 0 1 2 2.31 2.18 2.18 0 0 1-2 2.32z" />
+            </svg>
+          </span>
+          <div>
+            <p className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
+              Discord community
+            </p>
+            <p className="mt-1 font-display text-heading-sm tracking-tight text-text">
+              Join the Dustland Discord — devs hang out here.
+            </p>
+          </div>
+        </div>
+        <span className="inline-flex items-center gap-2 font-mono text-caption uppercase tracking-[0.25em] text-text transition-colors group-hover:text-accent">
+          discord.gg/rbh3eEV8Ka
+          <span aria-hidden>→</span>
+        </span>
+      </a>
 
       {/* Locations strip */}
       <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-divider/40 pt-8 font-mono text-caption uppercase tracking-[0.25em] text-text-muted">

@@ -37,7 +37,10 @@ export const baseMetadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description,
-    site: "@RedpadGames",
+    site: "@redpadgames",
+    creator: "@redpadgames",
+    // Explicit images so X serves the same OG card as Facebook / LinkedIn.
+    images: [`${siteUrl}/opengraph-image.jpg`],
   },
   robots: { index: true, follow: true },
 };
