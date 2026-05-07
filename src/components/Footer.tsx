@@ -10,10 +10,11 @@ const LOCATIONS = ["Zurich HQ", "Almaty Dev", "Delaware US", "Grand Cayman"];
 type FooterLink = { href: string; label: string; external?: boolean };
 
 const COL_STUDIO: ReadonlyArray<FooterLink> = [
-  { href: "https://redpad.games/about", label: "About Us", external: true },
+  { href: "/about", label: "About" },
   { href: "https://redpad.games/careers", label: "Careers", external: true },
   { href: "/news", label: "News" },
-  { href: "https://redpad.games/contact", label: "Contacts", external: true },
+  { href: "/contacts", label: "Contacts" },
+  { href: "/press-kit", label: "Press kit" },
 ];
 
 const COL_GAMES: ReadonlyArray<FooterLink> = [

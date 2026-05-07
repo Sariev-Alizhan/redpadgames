@@ -196,7 +196,7 @@ export default function DustlandPage() {
           </p>
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
-              Six frames from{" "}
+              Eighteen frames from{" "}
               <span className="text-accent">live build</span>.
             </h2>
           </Reveal>
@@ -214,6 +214,9 @@ export default function DustlandPage() {
                   alt={`Dustland gameplay screenshot ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 80vw, 32vw"
+                  // Eager-load only the first two frames; the rest lazy-load
+                  // so 18 screenshots don't all hit the network on first paint.
+                  loading={i < 2 ? "eager" : "lazy"}
                   className="object-cover transition-transform duration-cinematic ease-expo-out hover:scale-[1.03]"
                 />
               </li>

@@ -75,6 +75,7 @@ function PartnerRow({
             alt={p.name}
             width={160}
             height={52}
+            loading="lazy"
             className={cn(
               "h-8 w-auto md:h-10",
               !p.monochromeReady &&

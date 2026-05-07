@@ -28,12 +28,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body className="bg-bg text-text font-sans min-h-full">
+        {/* Skip-link for keyboard users — only visible when focused. Lets
+            screen-reader / Tab-key users jump past the fixed Navbar straight
+            to page content. */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-caption focus:uppercase focus:tracking-[0.2em] focus:text-text"
+        >
+          Skip to content
+        </a>
         <SceneControllerProvider>
           <SmoothScrollProvider>
             <GsapInit />
             <SharedCanvas />
             <Navbar />
-            <div className="relative z-10">{children}</div>
+            <div id="main-content" className="relative z-10">{children}</div>
             <Footer />
           </SmoothScrollProvider>
         </SceneControllerProvider>

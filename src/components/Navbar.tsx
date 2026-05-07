@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/games", label: "Games", external: false },
   { href: "/news", label: "News", external: false },
-  { href: "https://redpad.games/about", label: "Studio", external: true },
-  { href: "https://redpad.games/careers", label: "Careers", external: true },
+  { href: "/about", label: "Studio", external: false },
+  { href: "/contacts", label: "Contacts", external: false },
 ] as const;
 
 export function Navbar() {
