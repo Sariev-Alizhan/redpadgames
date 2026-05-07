@@ -40,8 +40,11 @@ export function MusicPlayer() {
 
   return (
     <div
+      // z-[220] sits above LoadingScreen (z-200) so the button is visible from
+      // first paint — never hidden by the loading overlay's wipe-out, which is
+      // what made it flicker / disappear in the user's screenshot.
       className={cn(
-        "fixed bottom-5 right-5 z-[110] flex items-center gap-3 rounded-full border border-divider bg-bg-elevated/90 py-2 pl-2 pr-4 shadow-lg backdrop-blur",
+        "fixed bottom-5 right-5 z-[220] flex items-center gap-3 rounded-full border border-divider bg-bg-elevated/90 py-2 pl-2 pr-4 shadow-lg backdrop-blur",
       )}
       aria-label="Background music"
     >

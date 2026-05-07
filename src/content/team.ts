@@ -10,8 +10,8 @@ export interface TeamMember {
 }
 
 export const founders: TeamMember[] = [
-  { name: "Vildan Fazylov", role: "Founder & CEO", portrait: "/team/team-vildan-fazylov.webp" },
-  { name: "Yevgeniy Neverov", role: "Founder & GPO" },
+  { name: "Vildan Fazylov", role: "Founder & CEO", portrait: "/team/team-vildan-fazylov.jpg" },
+  { name: "Yevgeniy Neverov", role: "Founder & GPO", portrait: "/team/team-yevgeniy-neverov.webp" },
 ];
 
 export const team: TeamMember[] = [
