@@ -6,3 +6,4 @@ export { Reveal } from "./Reveal";
 export { LoadingScreen } from "./LoadingScreen";
 export { TrailerModal } from "./TrailerModal";
 export { CookieBanner } from "./CookieBanner";
+export { ScrollProgress } from "./ScrollProgress";

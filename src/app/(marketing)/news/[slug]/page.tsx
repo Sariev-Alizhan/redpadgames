@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { news } from "@/content/news";
 import { Container } from "@/components/ui/Container";
-import { NewsArticleJsonLd } from "@/components/JsonLd";
+import { NewsArticleJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ShareButtons } from "@/components/ShareButtons";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -41,9 +42,23 @@ export default async function NewsArticlePage({
   const related = news.filter((n) => n.slug !== article.slug).slice(0, 2);
   const paragraphs = article.body.split(/\n\s*\n/).filter(Boolean);
 
+  // Reading time — average 220 words per minute (slightly fast for editorial,
+  // matches what Medium / Bloomberg quote). Floors at 1 minute.
+  const wordCount = article.body.split(/\s+/).filter(Boolean).length;
+  const readingMinutes = Math.max(1, Math.round(wordCount / 220));
+  const articleUrl = `${SITE_URL}/news/${article.slug}`;
+
   return (
     <main className="relative bg-bg">
       <NewsArticleJsonLd article={article} siteUrl={SITE_URL} />
+      <BreadcrumbJsonLd
+        siteUrl={SITE_URL}
+        items={[
+          { name: "Home", url: "/" },
+          { name: "News", url: "/news" },
+          { name: article.title, url: `/news/${article.slug}` },
+        ]}
+      />
       {/* Cover */}
       <div className="relative h-[60svh] min-h-[28rem] overflow-hidden">
         <Image
@@ -67,6 +82,8 @@ export default async function NewsArticlePage({
             <span className="text-accent">{article.category}</span>
             <span aria-hidden>·</span>
             <time dateTime={article.date}>{formatDate(article.date)}</time>
+            <span aria-hidden>·</span>
+            <span>{readingMinutes} min read</span>
           </div>
 
           <h1 className="mt-6 font-display font-black tracking-[-0.03em] text-text leading-[1.05] text-[clamp(2rem,5vw,4rem)]">
@@ -86,6 +103,11 @@ export default async function NewsArticlePage({
             </p>
           ))}
         </article>
+
+        {/* Share row — sits between body and the dedication / related list */}
+        <div className="mt-12 max-w-2xl border-t border-divider/40 pt-6">
+          <ShareButtons url={articleUrl} title={article.title} />
+        </div>
 
         {/* Personal dedication block */}
         {article.dedication ? (

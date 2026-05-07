@@ -5,7 +5,7 @@ import { Tag } from "@/components/ui/Tag";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton, Reveal } from "@/components/effects";
 import { games } from "@/content/games";
-import { VideoGameJsonLd } from "@/components/JsonLd";
+import { VideoGameJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 const wartide = games.find((g) => g.slug === "wartide-worlds")!;
 
@@ -50,6 +50,14 @@ export default function WartidePage() {
         game={wartide}
         siteUrl={SITE_URL}
         trailerUrl="https://www.youtube.com/embed/8b6ztHqsb4w"
+      />
+      <BreadcrumbJsonLd
+        siteUrl={SITE_URL}
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Games", url: "/games" },
+          { name: "Wartide Worlds", url: "/games/wartide-worlds" },
+        ]}
       />
       {/* Hero */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">

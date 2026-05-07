@@ -5,7 +5,7 @@ import { Tag } from "@/components/ui/Tag";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton, Reveal, TrailerModal } from "@/components/effects";
 import { games, dustlandTestResults, dustlandRoadmap } from "@/content/games";
-import { VideoGameJsonLd } from "@/components/JsonLd";
+import { VideoGameJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
 
 const dustland = games.find((g) => g.slug === "dustland")!;
 
@@ -75,6 +75,14 @@ export default function DustlandPage() {
         game={dustland}
         siteUrl={SITE_URL}
         trailerUrl={`https://www.youtube.com/embed/${TRAILER_YOUTUBE_ID}`}
+      />
+      <BreadcrumbJsonLd
+        siteUrl={SITE_URL}
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Games", url: "/games" },
+          { name: "Dustland", url: "/games/dustland" },
+        ]}
       />
       {/* Hero */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">

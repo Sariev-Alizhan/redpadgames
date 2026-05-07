@@ -1,6 +1,11 @@
 import type { Game } from "@/content/games";
 import type { NewsArticle } from "@/content/news";
 
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 /**
  * Tiny helper — emits a `<script type="application/ld+json">` with the given
  * payload. Server component, zero client cost.
@@ -46,6 +51,55 @@ export function OrganizationJsonLd({ siteUrl }: { siteUrl: string }) {
           { "@type": "PostalAddress", addressLocality: "Zurich", addressCountry: "CH" },
           { "@type": "PostalAddress", addressLocality: "Almaty", addressCountry: "KZ" },
         ],
+      }}
+    />
+  );
+}
+
+/** schema.org BreadcrumbList — gives Google a navigation hierarchy to
+ *  display under the result. Pass an ordered list from root to current. */
+export function BreadcrumbJsonLd({
+  items,
+  siteUrl,
+}: {
+  items: ReadonlyArray<BreadcrumbItem>;
+  siteUrl: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: item.name,
+          item: `${siteUrl}${item.url}`,
+        })),
+      }}
+    />
+  );
+}
+
+/** schema.org WebSite + SearchAction. Google may surface a sitelinks
+ *  search box for our domain when this is present. The /news listing acts
+ *  as the search target — we don't have a dedicated /search page yet. */
+export function WebSiteJsonLd({ siteUrl }: { siteUrl: string }) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "RedPad Games",
+        url: siteUrl,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${siteUrl}/news?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
       }}
     />
   );

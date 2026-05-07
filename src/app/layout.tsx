@@ -14,6 +14,7 @@ import {
   GrainOverlay,
   LoadingScreen,
   MusicPlayer,
+  ScrollProgress,
 } from "@/components/effects";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </SmoothScrollProvider>
         </SceneControllerProvider>
+        <ScrollProgress />
         <GrainOverlay />
         <Cursor />
         <MusicPlayer />

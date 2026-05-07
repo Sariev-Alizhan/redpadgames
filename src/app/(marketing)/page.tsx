@@ -10,7 +10,7 @@ import {
   NewsTeaserSection,
 } from "@/components/sections";
 import { CTASection } from "@/components/sections/CTASection";
-import { OrganizationJsonLd } from "@/components/JsonLd";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -22,6 +22,7 @@ export default function HomePage() {
   return (
     <main className="relative">
       <OrganizationJsonLd siteUrl={SITE_URL} />
+      <WebSiteJsonLd siteUrl={SITE_URL} />
       <HeroSection />
       <StudioStatementSection />
       <GamesSection />
