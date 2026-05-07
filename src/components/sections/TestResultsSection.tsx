@@ -65,7 +65,7 @@ export function TestResultsSection() {
           transition={{ duration: reduce ? 0 : sec(durations.slow), ease: easings.expoOut }}
           className="mt-8 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
         >
-          Numbers that <span className="font-sans italic font-bold text-accent">don&apos;t lie</span>.
+          Numbers that <span className="text-accent">don&apos;t lie</span>.
         </motion.h2>
 
         <motion.p

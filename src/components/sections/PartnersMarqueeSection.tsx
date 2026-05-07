@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Marquee } from "@/components/ui/Marquee";
-import { tierOnePartners, tierTwoPartners, type Partner } from "@/content/partners";
+import { partners, type Partner } from "@/content/partners";
 import { sec, durations, easings } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ export function PartnersMarqueeSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2rem,6vw,4.5rem)]"
         >
           Built with the people who built{" "}
-          <span className="font-sans italic font-bold text-accent">the rails</span>.
+          <span className="text-accent">the rails</span>.
         </motion.h2>
 
         <p className="mt-6 max-w-2xl text-body-md text-text-muted">
@@ -46,9 +46,8 @@ export function PartnersMarqueeSection() {
         </p>
       </Container>
 
-      <div className="mt-16 flex flex-col gap-8">
-        <PartnerRow partners={tierOnePartners} />
-        <PartnerRow partners={tierTwoPartners} reverse />
+      <div className="mt-16">
+        <PartnerRow partners={partners} />
       </div>
     </section>
   );
@@ -56,13 +55,11 @@ export function PartnersMarqueeSection() {
 
 function PartnerRow({
   partners,
-  reverse = false,
 }: {
   partners: Partner[];
-  reverse?: boolean;
 }) {
   return (
-    <Marquee reverse={reverse} pauseOnHover>
+    <Marquee pauseOnHover>
       {partners.map((p) => (
         <a
           key={p.name}

@@ -21,7 +21,7 @@ export default function GamesIndexPage() {
         </p>
         <h1 className="mt-6 max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,9vw,8rem)]">
           Two worlds.{" "}
-          <span className="font-sans italic font-bold text-accent">
+          <span className="text-accent">
             Both at full risk
           </span>
           .
@@ -75,7 +75,7 @@ export default function GamesIndexPage() {
                   <h2 className="mt-6 font-display font-black tracking-tight text-text leading-none text-[clamp(2.5rem,5vw,4.5rem)]">
                     {game.title}
                   </h2>
-                  <p className="mt-4 font-serif italic text-text-muted text-[clamp(1.125rem,1.6vw,1.5rem)]">
+                  <p className="mt-4 text-text-muted text-[clamp(1.125rem,1.6vw,1.5rem)]">
                     {game.tagline}
                   </p>
                   <p className="mt-6 max-w-xl text-body-md text-text-muted">

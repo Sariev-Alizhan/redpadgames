@@ -102,7 +102,7 @@ export function HeroSection() {
             className="block"
           >
             between{" "}
-            <span className="font-sans italic font-bold text-accent">
+            <span className="text-accent">
               two suns
             </span>
             .

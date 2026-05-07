@@ -8,7 +8,13 @@ import { SharedCanvas } from "@/components/three/SharedCanvas";
 import { SceneControllerProvider } from "@/components/three/SceneController";
 import { baseMetadata } from "@/lib/seo";
 import { sans, mono } from "./fonts";
-import { Cursor, GrainOverlay, LoadingScreen, MusicPlayer } from "@/components/effects";
+import {
+  CookieBanner,
+  Cursor,
+  GrainOverlay,
+  LoadingScreen,
+  MusicPlayer,
+} from "@/components/effects";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -34,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GrainOverlay />
         <Cursor />
         <MusicPlayer />
+        <CookieBanner />
         <LoadingScreen />
         <Analytics />
         <SpeedInsights />

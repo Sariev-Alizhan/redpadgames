@@ -70,7 +70,7 @@ export default function WartidePage() {
             </h1>
           </Reveal>
           <Reveal delayMs={240}>
-            <p className="mt-6 max-w-2xl font-serif italic text-text-muted text-[clamp(1.25rem,2.5vw,2rem)]">
+            <p className="mt-6 max-w-2xl text-text-muted text-[clamp(1.25rem,2.5vw,2rem)]">
               {wartide.tagline}
             </p>
           </Reveal>
@@ -102,7 +102,7 @@ export default function WartidePage() {
               <Reveal>
                 <h2 className="mt-6 font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,5.5vw,4.5rem)]">
                   Strategy{" "}
-                  <span className="font-sans italic font-bold text-accent">
+                  <span className="text-accent">
                     and
                   </span>{" "}
                   shooter — without compromise.
@@ -126,7 +126,7 @@ export default function WartidePage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               The map and the{" "}
-              <span className="font-sans italic font-bold text-accent">
+              <span className="text-accent">
                 soldier
               </span>{" "}
               in one game.
@@ -159,7 +159,7 @@ export default function WartidePage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               Frames from{" "}
-              <span className="font-sans italic font-bold text-accent">pre-production</span>.
+              <span className="text-accent">pre-production</span>.
             </h2>
           </Reveal>
         </Container>
@@ -202,7 +202,7 @@ export default function WartidePage() {
           <Reveal>
             <h2 className="mx-auto max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,8vw,6rem)]">
               War always has{" "}
-              <span className="font-sans italic font-bold text-accent">a reason</span>.
+              <span className="text-accent">a reason</span>.
             </h2>
           </Reveal>
           <p className="mx-auto mt-6 max-w-xl text-body-lg text-text-muted">

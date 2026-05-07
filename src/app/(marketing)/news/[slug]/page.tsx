@@ -74,7 +74,7 @@ export default async function NewsArticlePage({
         <article className="mt-12 max-w-2xl space-y-6 text-body-lg text-text-muted">
           {paragraphs.map((p, i) => (
             <p key={i} className={i === 0 ? "first-letter:text-accent" : undefined}>
-              {p.startsWith('"') ? <em className="font-serif italic text-text">{p}</em> : p}
+              {p.startsWith('"') ? <em className="text-text">{p}</em> : p}
             </p>
           ))}
         </article>
@@ -88,7 +88,7 @@ export default async function NewsArticlePage({
             <p className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
               A note to {article.dedication.to}
             </p>
-            <p className="mt-4 font-serif italic text-text leading-snug text-[clamp(1.25rem,2vw,1.625rem)]">
+            <p className="mt-4 text-text leading-snug text-[clamp(1.25rem,2vw,1.625rem)]">
               {article.dedication.message}
             </p>
             <p className="mt-6 font-mono text-caption uppercase tracking-[0.25em] text-text-faint">

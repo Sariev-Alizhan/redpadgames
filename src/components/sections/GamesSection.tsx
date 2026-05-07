@@ -36,7 +36,7 @@ export function GamesSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
         >
           Two worlds.{" "}
-          <span className="font-sans italic font-bold text-accent">
+          <span className="text-accent">
             Both at full risk.
           </span>
         </motion.h2>
@@ -120,7 +120,7 @@ function GameCard({
           <h3 className="mt-6 font-display font-black tracking-tight text-text leading-none text-[clamp(2.5rem,5vw,4.5rem)]">
             {game.title}
           </h3>
-          <p className="mt-4 font-serif italic text-text-muted text-[clamp(1.125rem,1.6vw,1.5rem)]">
+          <p className="mt-4 text-text-muted text-[clamp(1.125rem,1.6vw,1.5rem)]">
             {game.tagline}
           </p>
           <p className="mt-6 max-w-xl text-body-md text-text-muted">

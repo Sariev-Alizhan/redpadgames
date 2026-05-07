@@ -41,7 +41,7 @@ export function TeamSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
         >
           Seventy specialists,{" "}
-          <span className="font-sans italic font-bold text-accent">one studio</span>.
+          <span className="text-accent">one studio</span>.
         </motion.h2>
 
         <motion.p

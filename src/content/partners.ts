@@ -81,22 +81,9 @@ export const partners: Partner[] = [
     role: "Smart-contract audits",
     url: "https://www.quillaudits.com",
   },
-  {
-    name: "Allcorrect",
-    tier: "tier-2",
-    logo: "/partners/allcorrect.png",
-    monochromeReady: false,
-    role: "Localization",
-    url: "https://allcorrectgames.com",
-  },
-  {
-    name: "Crowe",
-    tier: "tier-2",
-    logo: "/partners/crowe.svg",
-    monochromeReady: false,
-    role: "Audit & advisory",
-    url: "https://www.crowe.com",
-  },
+  // Allcorrect (favicon-only mark) and Crowe (multicolor wordmark that doesn't
+  // invert cleanly) intentionally dropped — their partner badges read as
+  // squares against the monochrome row and broke the visual rhythm.
 ];
 
 export const tierOnePartners = partners.filter((p) => p.tier === "tier-1");

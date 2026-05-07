@@ -3,15 +3,14 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
 import { ButtonLink } from "@/components/ui/Button";
-import { MagneticButton } from "@/components/effects";
+import { MagneticButton, Reveal, TrailerModal } from "@/components/effects";
 import { games, dustlandTestResults, dustlandRoadmap } from "@/content/games";
-import { Reveal } from "@/components/effects";
 
 const dustland = games.find((g) => g.slug === "dustland")!;
 
 const STEAM_URL = "https://store.steampowered.com/app/1459630/Dustland/";
 const BETA_URL = "https://dustlandbeta.redpad.games/";
-const TRAILER_URL = "https://www.youtube.com/watch?v=RafZ1RX3xQ4";
+const TRAILER_YOUTUBE_ID = "RafZ1RX3xQ4";
 
 // Source-of-truth: store.steampowered.com/app/1459630/ + redpad.games/games/dustland.
 // Numbers and platform claims are taken directly from the Steam listing.
@@ -94,7 +93,7 @@ export default function DustlandPage() {
             </h1>
           </Reveal>
           <Reveal delayMs={240}>
-            <p className="mt-6 max-w-2xl font-serif italic text-text-muted text-[clamp(1.25rem,2.5vw,2rem)]">
+            <p className="mt-6 max-w-2xl text-text-muted text-[clamp(1.25rem,2.5vw,2rem)]">
               {dustland.tagline}
             </p>
           </Reveal>
@@ -106,9 +105,11 @@ export default function DustlandPage() {
                 </ButtonLink>
               </MagneticButton>
               <MagneticButton strength={8} className="w-full sm:w-auto">
-                <ButtonLink href={TRAILER_URL} variant="outline" size="lg" external className="w-full sm:w-auto">
-                  Watch trailer
-                </ButtonLink>
+                <TrailerModal
+                  youtubeId={TRAILER_YOUTUBE_ID}
+                  variant="outline"
+                  className="w-full sm:w-auto"
+                />
               </MagneticButton>
             </div>
           </Reveal>
@@ -126,7 +127,7 @@ export default function DustlandPage() {
               <Reveal>
                 <h2 className="mt-6 font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,5.5vw,4.5rem)]">
                   A world that{" "}
-                  <span className="font-sans italic font-bold text-accent">remembers</span>{" "}
+                  <span className="text-accent">remembers</span>{" "}
                   every choice you make.
                 </h2>
               </Reveal>
@@ -152,7 +153,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               Six pillars,{" "}
-              <span className="font-sans italic font-bold text-accent">
+              <span className="text-accent">
                 one feedback loop
               </span>.
             </h2>
@@ -184,7 +185,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               Six frames from{" "}
-              <span className="font-sans italic font-bold text-accent">live build</span>.
+              <span className="text-accent">live build</span>.
             </h2>
           </Reveal>
         </Container>
@@ -218,7 +219,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               A ten-year{" "}
-              <span className="font-sans italic font-bold text-accent">horizon</span>.
+              <span className="text-accent">horizon</span>.
             </h2>
           </Reveal>
           <ol className="mt-16 grid auto-rows-fr gap-6 lg:grid-cols-3">
@@ -301,7 +302,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mx-auto max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,8vw,7rem)]">
               Step into{" "}
-              <span className="font-sans italic font-bold text-accent">the dust</span>.
+              <span className="text-accent">the dust</span>.
             </h2>
           </Reveal>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">

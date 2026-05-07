@@ -23,7 +23,7 @@ export default function NewsIndexPage() {
         </p>
         <h1 className="mt-6 max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,9vw,8rem)]">
           From the{" "}
-          <span className="font-sans italic font-bold text-accent">studio</span>.
+          <span className="text-accent">studio</span>.
         </h1>
         <p className="mt-6 max-w-2xl text-body-lg text-text-muted">
           Partnerships, devlogs, and the long-form story behind Dustland.
