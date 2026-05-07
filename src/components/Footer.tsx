@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { SocialIcons } from "@/components/ui/SocialIcons";
-import { footprint } from "@/content/footprint";
+
+const LOCATIONS = ["Zurich HQ", "Almaty Dev", "Delaware US", "Grand Cayman"];
 
 const COL_STUDIO = [
   { href: "/about", label: "About Us" },
@@ -53,10 +54,10 @@ export function Footer() {
 
       {/* Locations strip */}
       <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-divider/40 pt-8 font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-        {footprint.map((entity) => (
-          <span key={entity.city} className="flex items-center gap-2">
+        {LOCATIONS.map((loc) => (
+          <span key={loc} className="flex items-center gap-2">
             <span aria-hidden className="size-1 rounded-full bg-accent" />
-            {entity.city} {entity.role.split(" · ")[0]}
+            {loc}
           </span>
         ))}
       </div>

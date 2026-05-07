@@ -27,6 +27,11 @@ export const games: Game[] = [
     cover: "/games/dustland/cover.jpg",
     gallery: [
       "/games/dustland/gameplay-1.jpg",
+      "/games/dustland/gameplay-2.jpg",
+      "/games/dustland/gameplay-3.jpg",
+      "/games/dustland/gameplay-4.jpg",
+      "/games/dustland/gameplay-5.jpg",
+      "/games/dustland/gameplay-6.jpg",
     ],
   },
   {

@@ -76,8 +76,9 @@ export function HeroSection() {
         }}
       />
 
-      {/* Content — bottom-aligned for cinematic framing */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-24 pt-32 md:px-12 md:pb-32 lg:px-20">
+      {/* Content — bottom-aligned for cinematic framing.
+          pb keeps the marquee strip clear (its row is ~52px tall). */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-32 pt-28 md:px-12 md:pb-40 md:pt-32 lg:px-20">
         <Tag variant="outline" className="mb-8 self-start">
           <span
             aria-hidden
@@ -127,8 +128,8 @@ export function HeroSection() {
           }}
           className="mt-8 max-w-xl text-body-lg text-text-muted md:text-xl"
         >
-          A 70-strong studio building multiplayer worlds others won&apos;t dare
-          to ship. Dustland leads our slate.
+          A 70-strong independent studio building multiplayer worlds others
+          won&apos;t dare to ship.
         </motion.p>
 
         <motion.div

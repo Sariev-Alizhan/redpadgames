@@ -101,7 +101,7 @@ export function TeamSection() {
           }}
           className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
         >
-          {team.map((person, idx) => (
+          {team.map((person) => (
             <motion.li
               key={person.name}
               variants={{
@@ -112,11 +112,7 @@ export function TeamSection() {
                   transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
                 },
               }}
-              className={
-                "group rounded-md border border-divider bg-bg-elevated p-5 transition-colors hover:border-accent/40 " +
-                // Break the monotony: every 5th tile is a tall accent.
-                (idx % 5 === 0 ? "sm:row-span-2 sm:bg-bg-elevated/80" : "")
-              }
+              className="group rounded-md border border-divider bg-bg-elevated p-5 transition-colors hover:border-accent/40"
             >
               <p className="font-display text-heading-sm tracking-tight text-text">
                 {person.name}
