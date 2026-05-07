@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { SocialIcons } from "@/components/ui/SocialIcons";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 const LOCATIONS = ["Zurich HQ", "Almaty Dev", "Delaware US", "Grand Cayman"];
 
@@ -20,12 +21,12 @@ const COL_STUDIO: ReadonlyArray<FooterLink> = [
 const COL_GAMES: ReadonlyArray<FooterLink> = [
   { href: "/games/dustland", label: "Dustland" },
   { href: "/games/wartide-worlds", label: "Wartide Worlds" },
-  { href: "https://redpad.games/token", label: "RPGC Token", external: true },
+  { href: "/token", label: "RPGC Token" },
 ];
 
 const COL_SUPPORT: ReadonlyArray<FooterLink> = [
-  { href: "https://redpad.games/support", label: "Help Center", external: true },
-  { href: "https://redpad.games/faq", label: "FAQ", external: true },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contacts", label: "Contact" },
   { href: "https://discord.gg/rbh3eEV8Ka", label: "Discord", external: true },
 ];
 
@@ -38,18 +39,21 @@ export function Footer() {
   return (
     <footer className="relative bg-bg border-t border-divider px-6 pb-8 pt-20 md:px-12 lg:px-20">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-        {/* Brand + community */}
-        <div className="md:col-span-4">
-          <Logo />
-          <p className="mt-6 max-w-xs text-body-md text-text-muted">
-            We build multiplayer worlds others won&apos;t dare to ship.
-          </p>
-          <div className="mt-8">
-            <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-faint mb-4">
-              Join our community
+        {/* Brand + community + newsletter */}
+        <div className="space-y-10 md:col-span-4">
+          <div>
+            <Logo />
+            <p className="mt-6 max-w-xs text-body-md text-text-muted">
+              We build multiplayer worlds others won&apos;t dare to ship.
             </p>
-            <SocialIcons />
+            <div className="mt-8">
+              <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-faint mb-4">
+                Join our community
+              </p>
+              <SocialIcons />
+            </div>
           </div>
+          <NewsletterSignup />
         </div>
 
         <FooterColumn title="Studio" links={COL_STUDIO} className="md:col-span-2" />
