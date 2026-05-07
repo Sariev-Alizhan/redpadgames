@@ -6,13 +6,20 @@ import { founders, team, teamCredits } from "@/content/team";
 import { sec, durations, easings } from "@/lib/motion";
 
 /**
- * Asymmetric team grid. Founders lead with large typographic tiles; the rest
- * fill a denser grid below. Pedigree row at the bottom names the franchises
- * the studio has shipped on. Portraits will drop in once the team shoot is
- * delivered (paths reserved on TeamMember.portrait).
+ * Team section — founder cards on top, then the rest of the studio rendered
+ * as a film-credits roll (name left, role right, hairline divider). No card
+ * grid: it kept showing empty cells when names wrapped to two lines. The
+ * credits treatment is what AAA studios (Larian, FromSoftware, CDPR) use,
+ * scales gracefully on mobile, and reads as confident editorial.
  */
 export function TeamSection() {
   const reduce = useReducedMotion();
+
+  // Split team in half for a 2-column credits layout on lg+.
+  // Use Math.ceil so the left column is the longer one when odd.
+  const mid = Math.ceil(team.length / 2);
+  const teamLeft = team.slice(0, mid);
+  const teamRight = team.slice(mid);
 
   return (
     <section
@@ -22,7 +29,7 @@ export function TeamSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          06 · The Team
+          06 / The Team
         </p>
 
         <motion.h2
@@ -51,7 +58,7 @@ export function TeamSection() {
           Four hubs, one shipping rhythm.
         </motion.p>
 
-        {/* Founders row */}
+        {/* Founder cards */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -62,7 +69,7 @@ export function TeamSection() {
               transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.2 },
             },
           }}
-          className="mt-20 grid gap-6 md:grid-cols-2"
+          className="mt-16 grid gap-6 md:grid-cols-2 md:gap-8"
         >
           {founders.map((person) => (
             <motion.div
@@ -75,12 +82,12 @@ export function TeamSection() {
                   transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
                 },
               }}
-              className="group relative overflow-hidden rounded-lg border border-divider bg-bg-elevated p-8 transition-colors hover:border-accent/40"
+              className="group relative overflow-hidden rounded-lg border border-divider bg-bg-elevated p-8 transition-colors hover:border-accent/40 md:p-10"
             >
               <span className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
                 Founder
               </span>
-              <p className="mt-6 font-display font-black tracking-tight text-text text-[clamp(1.75rem,3.5vw,3rem)] leading-tight">
+              <p className="mt-6 font-display font-black tracking-tight text-text leading-tight text-[clamp(1.75rem,3.5vw,2.75rem)]">
                 {person.name}
               </p>
               <p className="mt-3 text-body-md text-text-muted">{person.role}</p>
@@ -88,41 +95,21 @@ export function TeamSection() {
           ))}
         </motion.div>
 
-        {/* Asymmetric grid for team — 2 cols mobile, 3 sm, 4 lg, larger first row to break monotony */}
-        <motion.ul
-          initial="hidden"
-          whileInView="show"
+        {/* Studio credits — 2-col list on lg+, 1-col stacked below */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: {},
-            show: {
-              transition: { staggerChildren: reduce ? 0 : 0.05, delayChildren: 0.1 },
-            },
+          transition={{
+            duration: reduce ? 0 : sec(durations.slow),
+            ease: easings.expoOut,
+            delay: reduce ? 0 : 0.2,
           }}
-          className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+          className="mt-16 grid gap-x-12 gap-y-0 lg:grid-cols-2"
         >
-          {team.map((person) => (
-            <motion.li
-              key={person.name}
-              variants={{
-                hidden: { opacity: 0, y: 12 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
-                },
-              }}
-              className="group rounded-md border border-divider bg-bg-elevated p-5 transition-colors hover:border-accent/40"
-            >
-              <p className="font-display text-heading-sm tracking-tight text-text">
-                {person.name}
-              </p>
-              <p className="mt-2 font-mono text-caption uppercase tracking-[0.18em] text-text-faint">
-                {person.role}
-              </p>
-            </motion.li>
-          ))}
-        </motion.ul>
+          <CreditsList members={teamLeft} reduce={!!reduce} />
+          <CreditsList members={teamRight} reduce={!!reduce} />
+        </motion.div>
 
         {/* Pedigree row */}
         <motion.div
@@ -148,5 +135,49 @@ export function TeamSection() {
         </motion.div>
       </Container>
     </section>
+  );
+}
+
+function CreditsList({
+  members,
+  reduce,
+}: {
+  members: ReadonlyArray<{ name: string; role: string }>;
+  reduce: boolean;
+}) {
+  return (
+    <motion.ul
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={{
+        hidden: {},
+        show: {
+          transition: { staggerChildren: reduce ? 0 : 0.04, delayChildren: 0.05 },
+        },
+      }}
+    >
+      {members.map((person) => (
+        <motion.li
+          key={person.name}
+          variants={{
+            hidden: { opacity: 0, y: 8 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
+            },
+          }}
+          className="group flex items-baseline justify-between gap-6 border-b border-divider/40 py-4 transition-colors hover:border-accent/40"
+        >
+          <span className="font-display text-heading-sm font-semibold tracking-tight text-text transition-colors group-hover:text-accent">
+            {person.name}
+          </span>
+          <span className="shrink-0 text-right font-mono text-caption uppercase tracking-[0.18em] text-text-faint">
+            {person.role}
+          </span>
+        </motion.li>
+      ))}
+    </motion.ul>
   );
 }

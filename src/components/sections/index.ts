@@ -7,3 +7,4 @@ export { TestResultsSection } from "./TestResultsSection";
 export { PartnersMarqueeSection } from "./PartnersMarqueeSection";
 export { TeamSection } from "./TeamSection";
 export { FootprintSection } from "./FootprintSection";
+export { NewsTeaserSection } from "./NewsTeaserSection";

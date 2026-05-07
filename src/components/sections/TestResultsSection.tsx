@@ -14,30 +14,33 @@ type Result = {
   caption: string;
 };
 
+// Numbers RedPad has published. Server-load-test number is from the studio's
+// own news post (2 Feb 2023). Internal closed-test metrics are clearly labelled
+// as such — research pass 2 confirmed they aren't externally verifiable.
 const RESULTS: ReadonlyArray<Result> = [
   {
+    value: 40_000,
+    suffix: "+",
+    label: "Stress-test players",
+    caption: "Public server-load test, 2023",
+  },
+  {
     value: dustlandTestResults.participants,
-    label: "Participants",
-    caption: "Closed Dustland test 2024",
+    label: "Closed-test participants",
+    caption: "Internal data, 2024",
   },
   {
     value: Math.round(dustlandTestResults.retentionD1 * 100),
     suffix: "%",
     label: "D1 retention",
-    caption: "Genre median ≈ 45%",
-  },
-  {
-    value: Math.round(dustlandTestResults.retentionD3 * 100),
-    suffix: "%",
-    label: "D3 retention",
-    caption: "Players returning on day 3",
+    caption: "Genre median ≈ 45% · internal",
   },
   {
     value: dustlandTestResults.cpa,
     decimals: 1,
     suffix: " $",
     label: "CPA",
-    caption: "Acquisition cost per player",
+    caption: "Per active player · internal",
   },
 ];
 

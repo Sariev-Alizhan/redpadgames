@@ -7,6 +7,7 @@ import {
   PartnersMarqueeSection,
   TeamSection,
   FootprintSection,
+  NewsTeaserSection,
 } from "@/components/sections";
 import { CTASection } from "@/components/sections/CTASection";
 
@@ -21,6 +22,7 @@ export default function HomePage() {
       <PartnersMarqueeSection />
       <TeamSection />
       <FootprintSection />
+      <NewsTeaserSection />
       <CTASection />
     </main>
   );

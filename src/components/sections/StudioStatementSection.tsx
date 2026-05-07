@@ -106,7 +106,8 @@ export function StudioStatementSection() {
               one shipping rhythm.
             </p>
             <p className="mt-6 text-body-md text-text-muted">
-              Founded 2017 in Zurich. Four operational hubs. One slate.
+              Founded 2017. Incorporated in Zurich, 2020. Four operational
+              hubs across Europe, Central Asia, the US, and the Caribbean.
             </p>
           </motion.div>
         </div>

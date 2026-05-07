@@ -9,9 +9,9 @@ import { MagneticButton } from "@/components/effects";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/about", label: "Studio" },
   { href: "/games", label: "Games" },
   { href: "/news", label: "News" },
+  { href: "/about", label: "Studio" },
   { href: "/careers", label: "Careers" },
 ] as const;
 
