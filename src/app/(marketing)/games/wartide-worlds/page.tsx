@@ -5,8 +5,15 @@ import { Tag } from "@/components/ui/Tag";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton, Reveal } from "@/components/effects";
 import { games } from "@/content/games";
+import { VideoGameJsonLd } from "@/components/JsonLd";
 
 const wartide = games.find((g) => g.slug === "wartide-worlds")!;
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 const PILLARS = [
   {
@@ -39,6 +46,11 @@ export const metadata: Metadata = {
 export default function WartidePage() {
   return (
     <main className="relative bg-bg">
+      <VideoGameJsonLd
+        game={wartide}
+        siteUrl={SITE_URL}
+        trailerUrl="https://www.youtube.com/embed/8b6ztHqsb4w"
+      />
       {/* Hero */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
         <div className="absolute inset-0 -z-20 overflow-hidden">

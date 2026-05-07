@@ -5,12 +5,19 @@ import { Tag } from "@/components/ui/Tag";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton, Reveal, TrailerModal } from "@/components/effects";
 import { games, dustlandTestResults, dustlandRoadmap } from "@/content/games";
+import { VideoGameJsonLd } from "@/components/JsonLd";
 
 const dustland = games.find((g) => g.slug === "dustland")!;
 
 const STEAM_URL = "https://store.steampowered.com/app/1459630/Dustland/";
 const BETA_URL = "https://dustlandbeta.redpad.games/";
 const TRAILER_YOUTUBE_ID = "RafZ1RX3xQ4";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 // Source-of-truth: store.steampowered.com/app/1459630/ + redpad.games/games/dustland.
 // Numbers and platform claims are taken directly from the Steam listing.
@@ -64,6 +71,11 @@ export const metadata: Metadata = {
 export default function DustlandPage() {
   return (
     <main className="relative bg-bg">
+      <VideoGameJsonLd
+        game={dustland}
+        siteUrl={SITE_URL}
+        trailerUrl={`https://www.youtube.com/embed/${TRAILER_YOUTUBE_ID}`}
+      />
       {/* Hero */}
       <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden">
         <div className="absolute inset-0 -z-20 overflow-hidden">
