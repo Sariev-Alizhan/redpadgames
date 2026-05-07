@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { founders, team, teamCredits } from "@/content/team";
@@ -82,15 +83,32 @@ export function TeamSection() {
                   transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
                 },
               }}
-              className="group relative overflow-hidden rounded-lg border border-divider bg-bg-elevated p-8 transition-colors hover:border-accent/40 md:p-10"
+              className="group relative overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
             >
-              <span className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
-                Founder
-              </span>
-              <p className="mt-6 font-display font-black tracking-tight text-text leading-tight text-[clamp(1.75rem,3.5vw,2.75rem)]">
-                {person.name}
-              </p>
-              <p className="mt-3 text-body-md text-text-muted">{person.role}</p>
+              {person.portrait ? (
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg">
+                  <Image
+                    src={person.portrait}
+                    alt={person.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover object-top transition-transform duration-cinematic ease-expo-out group-hover:scale-[1.04]"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-bg-elevated via-bg-elevated/40 to-transparent"
+                  />
+                </div>
+              ) : null}
+              <div className="p-8 md:p-10">
+                <span className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
+                  Founder
+                </span>
+                <p className="mt-6 font-display font-black tracking-tight text-text leading-tight text-[clamp(1.75rem,3.5vw,2.75rem)]">
+                  {person.name}
+                </p>
+                <p className="mt-3 text-body-md text-text-muted">{person.role}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

@@ -13,40 +13,47 @@ const STEAM_URL = "https://store.steampowered.com/app/1459630/Dustland/";
 const BETA_URL = "https://dustlandbeta.redpad.games/";
 const TRAILER_URL = "https://www.youtube.com/watch?v=RafZ1RX3xQ4";
 
+// Source-of-truth: store.steampowered.com/app/1459630/ + redpad.games/games/dustland.
+// Numbers and platform claims are taken directly from the Steam listing.
 const FEATURES = [
   {
-    title: "Faction objectives",
+    title: "Three factions, seasonal goals",
     body:
-      "Faction goals shape the world. Their success or failure changes the map and the rules every season.",
+      "Three factions vie for control. Each season the objectives rotate; the map state inherits last season's outcome.",
   },
   {
-    title: "Dynamic temperature zones",
+    title: "5 weapon types · custom assembly",
     body:
-      "Map-wide weather systems alter playstyle moment to moment — heat dictates loadout, cold dictates routes.",
+      "Five weapon classes with a unique part-by-part assembly system — pick the receiver, attach the rest, tune for the fight.",
   },
   {
-    title: "Mission variety",
+    title: "50+ missions · 350+ items",
     body:
-      "Each mission shifts the type of competition: extraction, escort, hold, scavenge. Pick the fight you want.",
+      "Missions rotate types — extraction, escort, hold, scavenge — across 350+ findable items. Carry it out or die with it.",
   },
   {
-    title: "Resource warfare",
+    title: "Sandstorm map events",
     body:
-      "Resource control and map orientation are gameplay layers in their own right. Map awareness wins matches.",
+      "Dynamic sandstorms reshape the playable area in real time. Routes and sightlines you trusted last raid are gone.",
   },
   {
-    title: "Persistent customization",
+    title: "64 km² · 100+ locations",
     body:
-      "Find rare items mid-mission, carry them across runs. Every drop is a real risk and a real reward.",
+      "A 64 square-kilometre wasteland with over a hundred unique authored locations — settlements, wrecks, depots, hideouts.",
   },
   {
-    title: "Long-form character",
+    title: "Squad up · Easy Anti-Cheat",
     body:
-      "Talents, progression, and faction reputation for the players who stay through the season.",
+      "Voice and text squad chat. Easy Anti-Cheat across all live servers. Mature content, English and Russian on launch.",
   },
 ];
 
-const PLATFORMS = ["PC · Steam", "Console", "Mobile", "VR"];
+const PLATFORMS = [
+  "PC · Steam (live)",
+  "PlayStation (planned)",
+  "Xbox (planned)",
+  "Mobile (planned)",
+];
 
 export const metadata: Metadata = {
   title: "Dustland",

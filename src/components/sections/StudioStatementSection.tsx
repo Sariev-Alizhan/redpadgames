@@ -79,12 +79,15 @@ export function StudioStatementSection() {
             </p>
 
             <h2 className="mt-6 font-display font-black tracking-[-0.03em] text-text leading-[0.95] text-[clamp(2.25rem,5.5vw,4.5rem)]">
-              Independent.{" "}
+              We{" "}
               <span className="font-sans italic font-bold text-accent">
-                Uncompromising.
+                build
               </span>{" "}
-              Built to ship.
+              worlds.
             </h2>
+            <p className="mt-6 font-mono text-caption uppercase tracking-[0.25em] text-text-faint">
+              Studio mantra · Since 2017
+            </p>
           </motion.div>
 
           {/* Right rail — body sits next to the headline so eye doesn't track far */}

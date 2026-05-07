@@ -18,12 +18,12 @@ export const games: Game[] = [
   {
     slug: "dustland",
     title: "Dustland",
-    tagline: "Survive the dust. Outlast the others.",
+    tagline: "Find your shadow between two suns.",
     description:
-      "An immersive multiplayer survival shooter set in a layered post-apocalyptic world. Dynamic temperature zones, faction goals, and shifting map states make every session unique. Designed to scale from session shooter to full MMO.",
+      "MMO action survival in a post-apocalyptic world where a lunar nuclear test put a second sun in Earth's sky. Three factions, 5 weapon types with custom assembly, 50+ missions, 350+ items, and a 64 km² wasteland of over 100 authored locations. Live in Steam Early Access.",
     status: "early-access",
-    releaseLabel: "Early Access · December 2024",
-    platforms: ["PC", "Console", "Mobile", "VR"],
+    releaseLabel: "Early Access · 9 December 2024",
+    platforms: ["PC (live)", "PlayStation (planned)", "Xbox (planned)", "Mobile (planned)"],
     cover: "/games/dustland/cover.jpg",
     gallery: [
       "/games/dustland/gameplay-1.jpg",
@@ -37,12 +37,12 @@ export const games: Game[] = [
   {
     slug: "wartide-worlds",
     title: "Wartide Worlds",
-    tagline: "War always has a reason.",
+    tagline: "War always has a reason!",
     description:
-      "A cross-genre product that lets players seamlessly switch between strategic map control and first-person unit command. At the intersection of the most demanded and deepest genres in modern gaming.",
+      "MMORTS / FPS hybrid with RPG mechanics. Players switch between strategic map control and first-person unit command, and travel between historical eras — Iron Age through space exploration — through temporal anomalies. Every unit is a named personality with its own loadout, skills, and history.",
     status: "in-development",
-    releaseLabel: "Q3 2026",
-    platforms: ["PC", "Console"],
+    releaseLabel: "In development",
+    platforms: ["PC", "PlayStation", "Xbox", "Mobile"],
     cover: "/games/wartide-worlds/cover.jpg",
   },
 ];
