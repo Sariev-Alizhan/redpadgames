@@ -9,6 +9,8 @@ import { SceneControllerProvider } from "@/components/three/SceneController";
 import { baseMetadata } from "@/lib/seo";
 import { display, sans, mono, serif } from "./fonts";
 import { Cursor, GrainOverlay } from "@/components/effects";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = baseMetadata;
 
@@ -24,7 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScrollProvider>
             <GsapInit />
             <SharedCanvas />
+            <Navbar />
             <div className="relative z-10">{children}</div>
+            <Footer />
           </SmoothScrollProvider>
         </SceneControllerProvider>
         <GrainOverlay />
