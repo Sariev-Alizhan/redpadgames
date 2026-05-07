@@ -9,12 +9,9 @@ import { MagneticButton } from "@/components/effects";
 import { useSceneSetter } from "@/components/three/SceneController";
 import { sec, durations, easings } from "@/lib/motion";
 
-// Hero uses the existing legacy still + dustland loop until the Higgsfield
-// "two suns" assets land at /hero/hero-bg.jpg and /hero/hero-loop.mp4 — when
-// they ship, swap these two constants. Keeping the references explicit so a
-// missing file is a one-line fix, not a chase through onError handlers.
-const VIDEO_SRC = "/dustland/key-loop.mp4";
-const POSTER_SRC = "/hero/sovereign-globe.png";
+// Higgsfield "two suns" assets — placed by /Sort and place Higgsfield visuals.
+const VIDEO_SRC = "/hero/hero-loop.mp4";
+const POSTER_SRC = "/hero/hero-bg.jpg";
 
 const MARQUEE_TOKENS = [
   "Zurich HQ",

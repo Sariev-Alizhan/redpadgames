@@ -24,12 +24,9 @@ export const games: Game[] = [
     status: "early-access",
     releaseLabel: "Early Access · December 2024",
     platforms: ["PC", "Console", "Mobile", "VR"],
-    cover: "/games/dustland-cover.jpg",
+    cover: "/games/dustland/cover.jpg",
     gallery: [
-      "/games/dustland/gallery-01.jpg",
-      "/games/dustland/gallery-02.jpg",
-      "/games/dustland/gallery-03.jpg",
-      "/games/dustland/gallery-04.jpg",
+      "/games/dustland/gameplay-1.jpg",
     ],
   },
   {
@@ -41,7 +38,7 @@ export const games: Game[] = [
     status: "in-development",
     releaseLabel: "Q3 2026",
     platforms: ["PC", "Console"],
-    cover: "/games/wartide-cover.jpg",
+    cover: "/games/wartide-worlds/cover.jpg",
   },
 ];
 

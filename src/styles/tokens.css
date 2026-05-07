@@ -5,41 +5,45 @@
 */
 
 @theme {
-  /* ===== Raw palette ===== */
-  --color-obsidian: #08090c;
-  --color-steel: #1c1f25;
-  --color-steel-soft: #2a2e36;
-  --color-pearl: #f4f5f7;
-  --color-cool-gray: #9098a6;
-  --color-cool-gray-dim: #5e6573;
-  --color-red-signal: #e1141c;
-  --color-red-signal-hot: #ff2230;
+  /* ===== Raw palette (Ultimate brief, 2026-05-07) ===== */
+  --color-obsidian: #0a0a0b;
+  --color-steel: #1c1c20;
+  --color-steel-soft: #2a2a30;
+  --color-pearl: #f4f4f5;
+  --color-cool-gray: #8a8a92;
+  --color-cool-gray-dim: #4a4a52;
+  --color-red-signal: #e11d2e;
+  --color-red-signal-hot: #ff2e45;
+  --color-red-signal-deep: #8b0e1b;
   --color-cyan-hint: #3da9ff;
   --color-amber: #f0a93e;
   --color-emerald: #34c77a;
 
   /* ===== Semantic role tokens (primary API for components) ===== */
-  --color-bg: #08090c;
-  --color-surface: #1c1f25;
-  --color-surface-elevated: #2a2e36;
-  --color-text: #f4f5f7;
-  --color-text-muted: #9098a6;
-  --color-text-dim: #5e6573;
-  --color-accent: #e1141c;
-  --color-accent-hot: #ff2230;
-  --color-accent-deep: #8b0e1b;
+  --color-bg: #0a0a0b;
   --color-bg-elevated: #131316;
+  --color-surface: #1c1c20;
+  --color-surface-elevated: #2a2a30;
+  --color-divider: #2a2a30;
+  --color-text: #f4f4f5;
+  --color-text-muted: #8a8a92;
+  --color-text-dim: #5e6573;
   --color-text-faint: #4a4a52;
+  --color-accent: #e11d2e;
+  --color-accent-hot: #ff2e45;
+  --color-accent-bright: #ff2e45;
+  --color-accent-deep: #8b0e1b;
   --color-grid-line: rgba(255, 255, 255, 0.04);
-  --color-divider: #2a2e36;
   --color-success: #34c77a;
   --color-warning: #f0a93e;
-  --color-danger: #e1141c;
+  --color-danger: #e11d2e;
   --color-data-cyan: #3da9ff;
 
-  /* ===== Fonts (set by next/font on <html>) ===== */
-  --font-display: var(--font-display);
+  /* ===== Fonts (set by next/font on <html>) =====
+     One Inter face powers both body and display — heavy weights on H1/H2
+     give the editorial feel without pulling a second font file. */
   --font-sans: var(--font-sans);
+  --font-display: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 

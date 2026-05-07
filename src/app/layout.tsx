@@ -7,7 +7,7 @@ import GsapInit from "@/components/GsapInit";
 import { SharedCanvas } from "@/components/three/SharedCanvas";
 import { SceneControllerProvider } from "@/components/three/SceneController";
 import { baseMetadata } from "@/lib/seo";
-import { display, sans, mono, serif } from "./fonts";
+import { sans, mono, serif } from "./fonts";
 import { Cursor, GrainOverlay } from "@/components/effects";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${display.variable} ${sans.variable} ${mono.variable} ${serif.variable} h-full antialiased`}
+      className={`${sans.variable} ${mono.variable} ${serif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="bg-bg text-text font-sans min-h-full">

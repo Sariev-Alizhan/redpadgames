@@ -22,7 +22,7 @@ export function Logo({
   const content = (
     <span className={cn("inline-flex items-center gap-3", className)}>
       <Image
-        src="/brand/redpad-logo.jpeg"
+        src="/brand/redpad-logo.png"
         alt="RedPad Games"
         width={size}
         height={size}

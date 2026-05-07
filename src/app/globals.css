@@ -1,6 +1,23 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* Brief-shorthand aliases — let any raw CSS reach for `var(--bg)` /
+   `var(--accent)` without the Tailwind-v4 `--color-` prefix. Tailwind
+   utilities still drive off the prefixed names in tokens.css. */
+:root {
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-elevated);
+  --surface: var(--color-surface);
+  --divider: var(--color-divider);
+  --text: var(--color-text);
+  --text-muted: var(--color-text-muted);
+  --text-faint: var(--color-text-faint);
+  --accent: var(--color-accent);
+  --accent-bright: var(--color-accent-bright);
+  --accent-deep: var(--color-accent-deep);
+  --grid-line: var(--color-grid-line);
+}
+
 /* Base layer styles — kept thin. Components reach for tokens directly. */
 
 html,
