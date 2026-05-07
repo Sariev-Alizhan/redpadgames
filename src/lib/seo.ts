@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 
-const siteUrl = "https://redpad.games";
+// Source-of-truth for absolute URLs in metadata (canonical, OG image, sitemap).
+// Vercel deployments expose VERCEL_PROJECT_PRODUCTION_URL — used so social
+// previews resolve correctly even before the custom redpad.games domain is
+// wired up. Override with NEXT_PUBLIC_SITE_URL when redpad.games points at
+// Vercel (Settings → Domains).
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
+
 const siteName = "RedPad Games";
 const description =
   "RedPad Games — a four-flag game studio building Dustland and the next generation of multiplayer experiences. Almaty · Zurich · Delaware · Cayman.";

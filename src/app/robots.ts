@@ -1,5 +1,11 @@
 import type { MetadataRoute } from "next";
 
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -8,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://redpad.games/sitemap.xml",
+    sitemap: `${SITE}/sitemap.xml`,
   };
 }

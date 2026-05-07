@@ -2,7 +2,13 @@ import type { MetadataRoute } from "next";
 import { games } from "@/content/games";
 import { news } from "@/content/news";
 
-const SITE = "https://redpad.games";
+// Mirrors src/lib/seo.ts — keep this in sync. Falls back to the Vercel
+// production URL until the custom redpad.games domain is wired up.
+const SITE =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 /**
  * Generated sitemap. Static pages first, then SSG game + news routes.
