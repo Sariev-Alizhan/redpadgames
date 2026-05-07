@@ -41,3 +41,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code session artefacts
+/.claude/scheduled_tasks.lock
+
+# brief reference assets (not part of the build)
+/redpad-content/
+/CLAUDE_CODE_BRIEF.md
+/FINAL_MEGA_BRIEF.md

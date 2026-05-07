@@ -27,6 +27,10 @@
   --color-text-dim: #5e6573;
   --color-accent: #e1141c;
   --color-accent-hot: #ff2230;
+  --color-accent-deep: #8b0e1b;
+  --color-bg-elevated: #131316;
+  --color-text-faint: #4a4a52;
+  --color-grid-line: rgba(255, 255, 255, 0.04);
   --color-divider: #2a2e36;
   --color-success: #34c77a;
   --color-warning: #f0a93e;
@@ -37,6 +41,7 @@
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 
   /* ===== Type scale ===== */
   --text-display-xl: 6rem;
