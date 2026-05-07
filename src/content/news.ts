@@ -23,14 +23,14 @@ export const news: NewsArticle[] = [
     slug: "redpad-tencent-cloud-partnership",
     title: "RedPad Games × Tencent Cloud — Strategic Partnership Signed in Dubai",
     excerpt:
-      "Today, May 7, 2026, RedPad Games signed a long-term cloud-infrastructure partnership with Tencent Cloud. The deal extends Dustland's reach across APAC and the Middle East and underpins the studio's next slate.",
+      "May 7, 2026 — RedPad Games and Tencent Cloud sign a long-term cloud-infrastructure partnership at a ceremony in Dubai. The deal extends Dustland's reach across APAC and MENA and underpins the studio's next slate.",
     date: "2026-05-07",
     category: "Partnership",
-    cover: "/hero/hero-bg.jpg",
+    cover: "/news/tencent-signing.jpg",
     featured: true,
-    body: `Today, in Dubai, RedPad Games AG signed a strategic cloud-infrastructure partnership with Tencent Cloud. The agreement secures regional capacity across APAC and MENA for Dustland's live operations, the closed Wartide Worlds development clusters, and the RPGC marketplace.
+    body: `Dubai, UAE — at 12:00 PM local time on May 7, 2026, RedPad Games AG and Tencent Cloud counterparts signed a strategic cloud-infrastructure partnership at an Agreement Signing Ceremony in Dubai. The agreement secures regional capacity across APAC and MENA for Dustland's live operations, the Wartide Worlds development clusters, and the RPGC marketplace.
 
-For RedPad, the partnership is the largest infrastructure step since the studio's incorporation in Zurich in 2017. It joins existing peer infrastructure relationships with AWS and brings the studio's cloud footprint to four production regions.
+For RedPad, the partnership is the largest infrastructure step since the studio's incorporation in Zurich in 2020. It joins existing peer infrastructure relationships with AWS and brings the studio's cloud footprint to four production regions.
 
 For players, the practical effect is lower latency in the regions where Dustland's player base is growing fastest — and the headroom to scale to a full MMO when the season-three feature set ships in winter 2026.
 
