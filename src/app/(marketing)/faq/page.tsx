@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/effects";
+import { FaqJsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -100,9 +101,13 @@ const SECTIONS = [
   },
 ];
 
+// Flatten all sections into a single Q&A list for the FAQPage schema.
+const ALL_QA = SECTIONS.flatMap((s) => s.items);
+
 export default function FaqPage() {
   return (
     <main className="relative bg-bg pt-32 md:pt-40">
+      <FaqJsonLd items={ALL_QA} />
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
           FAQ

@@ -1,4 +1,5 @@
 import type { Game } from "@/content/games";
+import type { NewsArticle } from "@/content/news";
 
 /**
  * Tiny helper — emits a `<script type="application/ld+json">` with the given
@@ -45,6 +46,70 @@ export function OrganizationJsonLd({ siteUrl }: { siteUrl: string }) {
           { "@type": "PostalAddress", addressLocality: "Zurich", addressCountry: "CH" },
           { "@type": "PostalAddress", addressLocality: "Almaty", addressCountry: "KZ" },
         ],
+      }}
+    />
+  );
+}
+
+/** schema.org NewsArticle — emitted on every news/[slug] page. Triggers
+ *  Google News rich-results (cards, top-stories carousels). */
+export function NewsArticleJsonLd({
+  article,
+  siteUrl,
+}: {
+  article: NewsArticle;
+  siteUrl: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        headline: article.title,
+        description: article.excerpt,
+        image: [`${siteUrl}${article.cover}`],
+        datePublished: article.date,
+        dateModified: article.date,
+        articleSection: article.category,
+        author: {
+          "@type": "Organization",
+          name: "RedPad Games",
+          url: siteUrl,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "RedPad Games",
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/brand/redpad-logo.png`,
+          },
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${siteUrl}/news/${article.slug}`,
+        },
+      }}
+    />
+  );
+}
+
+/** schema.org FAQPage — used on the /faq page. Each Q+A pair becomes a
+ *  Question/Answer entity. Google can surface as an FAQ rich-snippet. */
+export function FaqJsonLd({
+  items,
+}: {
+  items: ReadonlyArray<{ q: string; a: string }>;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
       }}
     />
   );

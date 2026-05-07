@@ -2,12 +2,14 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
 import { Tag } from "@/components/ui/Tag";
 import { MagneticButton } from "@/components/effects";
 import { useSceneSetter } from "@/components/three/SceneController";
 import { sec, durations, easings } from "@/lib/motion";
+import { featuredArticle } from "@/content/news";
 
 // Hero background uses the real Dustland page-bg key art (eclipse + character +
 // ruins). User explicitly asked to drop the video loop and lead with the game's
@@ -70,6 +72,38 @@ export function HeroSection() {
       {/* Content — bottom-aligned for cinematic framing.
           pb keeps the marquee strip clear (its row is ~52px tall). */}
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-32 pt-28 md:px-12 md:pb-40 md:pt-32 lg:px-20">
+        {/* Live news pill — points at whichever article is featured in
+            content/news.ts. Pulse + accent border = 'something happened today'. */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: reduce ? 0 : sec(durations.slow),
+            ease: easings.expoOut,
+          }}
+          className="mb-6 self-start"
+        >
+          <Link
+            href={`/news/${featuredArticle.slug}`}
+            data-cursor="hover"
+            className="group inline-flex items-center gap-3 rounded-full border border-accent/60 bg-bg/40 px-3 py-1.5 backdrop-blur transition-colors hover:border-accent hover:bg-accent/10"
+          >
+            <span aria-hidden className="size-1.5 rounded-full bg-accent animate-pulse-signal" />
+            <span className="font-mono text-caption uppercase tracking-[0.25em] text-accent">
+              New
+            </span>
+            <span className="hidden font-display text-body-sm tracking-tight text-text sm:inline">
+              {featuredArticle.title}
+            </span>
+            <span className="font-display text-body-sm tracking-tight text-text sm:hidden">
+              Latest news
+            </span>
+            <span aria-hidden className="font-mono text-caption text-text-muted transition-transform group-hover:translate-x-0.5">
+              →
+            </span>
+          </Link>
+        </motion.div>
+
         <Tag variant="outline" className="mb-8 self-start">
           <span
             aria-hidden

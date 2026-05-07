@@ -27,6 +27,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${sans.variable} ${mono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Resource hints — DNS-prefetch + preconnect to the asset
+            domains we actually hit during the critical render path so the
+            browser opens TCP/TLS in parallel with HTML parsing. */}
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
+      </head>
       <body className="bg-bg text-text font-sans min-h-full">
         {/* Skip-link for keyboard users — only visible when focused. Lets
             screen-reader / Tab-key users jump past the fixed Navbar straight

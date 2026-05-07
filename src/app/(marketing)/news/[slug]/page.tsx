@@ -4,6 +4,13 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { news } from "@/content/news";
 import { Container } from "@/components/ui/Container";
+import { NewsArticleJsonLd } from "@/components/JsonLd";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 export async function generateStaticParams() {
   return news.map((n) => ({ slug: n.slug }));
@@ -36,6 +43,7 @@ export default async function NewsArticlePage({
 
   return (
     <main className="relative bg-bg">
+      <NewsArticleJsonLd article={article} siteUrl={SITE_URL} />
       {/* Cover */}
       <div className="relative h-[60svh] min-h-[28rem] overflow-hidden">
         <Image
