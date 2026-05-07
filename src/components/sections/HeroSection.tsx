@@ -139,9 +139,9 @@ export function HeroSection() {
             ease: easings.expoOut,
             delay: reduce ? 0 : 0.9,
           }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6"
         >
-          <MagneticButton strength={20}>
+          <MagneticButton strength={8} className="w-full sm:w-auto">
             <ButtonLink
               href="/games/dustland"
               variant="primary"
@@ -151,7 +151,7 @@ export function HeroSection() {
               Enter Dustland
             </ButtonLink>
           </MagneticButton>
-          <MagneticButton strength={20}>
+          <MagneticButton strength={8} className="w-full sm:w-auto">
             <ButtonLink
               href="/about"
               variant="outline"

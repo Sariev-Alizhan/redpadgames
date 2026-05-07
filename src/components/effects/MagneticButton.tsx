@@ -50,8 +50,13 @@ export function MagneticButton({
       const cy = rect.top + rect.height / 2;
       const dx = (e.clientX - cx) / (rect.width / 2);
       const dy = (e.clientY - cy) / (rect.height / 2);
-      targetX = dx * strength;
-      targetY = dy * strength;
+      // Clamp to [-1, 1] so the pull saturates at `strength` even when the
+      // pointer is well outside the wrapper (prevents collisions with siblings
+      // when two MagneticButtons sit close together in a flex row).
+      const clampedX = Math.max(-1, Math.min(1, dx));
+      const clampedY = Math.max(-1, Math.min(1, dy));
+      targetX = clampedX * strength;
+      targetY = clampedY * strength;
     };
     const onLeave = () => {
       targetX = 0;
@@ -79,10 +84,10 @@ export function MagneticButton({
   return (
     <div
       ref={wrapperRef}
-      className={cn("inline-block will-change-transform", className)}
+      className={cn("inline-flex will-change-transform", className)}
       {...rest}
     >
-      <div ref={innerRef} className="will-change-transform">
+      <div ref={innerRef} className="w-full will-change-transform">
         {children}
       </div>
     </div>
