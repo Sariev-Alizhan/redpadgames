@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -21,6 +21,21 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = baseMetadata;
 
+/**
+ * Cross-OS viewport. `viewportFit: "cover"` lets us bleed under iPhone
+ * notch / dynamic island. `themeColor` sets the iOS Safari status bar
+ * tint and the Android Chrome address bar — light-on-dark to match the
+ * site. `colorScheme: "dark"` tells form controls + scrollbars to render
+ * dark by default.
+ */
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -36,6 +51,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+        {/* iOS Safari add-to-home-screen behavior. Without these, iOS
+            launches the site in Safari chrome instead of standalone. */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="RedPad" />
+
+        {/* Windows / Edge tile color when pinned to Start. */}
+        <meta name="msapplication-TileColor" content="#0a0a0b" />
+        <meta name="msapplication-tap-highlight" content="no" />
       </head>
       <body className="bg-bg text-text font-sans min-h-full">
         {/* Skip-link for keyboard users — only visible when focused. Lets

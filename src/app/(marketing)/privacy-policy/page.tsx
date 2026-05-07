@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
         Red Pad Games AG (&quot;RedPad&quot;, &quot;we&quot;, &quot;us&quot;) is a Swiss
         company headquartered in Zurich, with a development hub in Almaty,
         Kazakhstan. The data controller for this site is Red Pad Games AG.
-        Reach us at <a href="mailto:privacy@redpad.games">privacy@redpad.games</a> for
+        Reach us at <a href="mailto:contact@redpad.games?subject=%5BRedPad%5D%20Privacy">contact@redpad.games</a> for
         any privacy question.
       </p>
 
@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
         Under GDPR, UK GDPR, the Swiss Federal Act on Data Protection, and
         analogous laws elsewhere, you have the right to: access the data we
         hold about you, correct it, delete it, port it, or object to its
-        processing. To exercise any of these, write to <a href="mailto:privacy@redpad.games">privacy@redpad.games</a> —
+        processing. To exercise any of these, write to <a href="mailto:contact@redpad.games?subject=%5BRedPad%5D%20Privacy">contact@redpad.games</a> —
         we&apos;ll respond within 30 days.
       </p>
 
@@ -121,7 +121,7 @@ export default function PrivacyPolicyPage() {
 
       <h2>Contact</h2>
       <p>
-        Privacy questions: <a href="mailto:privacy@redpad.games">privacy@redpad.games</a>.
+        Privacy questions: <a href="mailto:contact@redpad.games?subject=%5BRedPad%5D%20Privacy">contact@redpad.games</a>.
         General contact: <a href="/contacts">contacts page</a>.
       </p>
     </LegalLayout>

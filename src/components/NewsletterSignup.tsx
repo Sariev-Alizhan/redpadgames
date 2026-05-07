@@ -20,7 +20,7 @@ export function NewsletterSignup() {
     const body = encodeURIComponent(
       `Please subscribe ${email} to the RedPad Games newsletter.`,
     );
-    window.location.href = `mailto:hello@redpad.games?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@redpad.games?subject=${subject}&body=${body}`;
     setSent(true);
   };
 

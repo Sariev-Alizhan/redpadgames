@@ -38,7 +38,7 @@ const PROCESS = [
     step: "01",
     title: "Apply",
     body:
-      "Email careers@redpad.games with your CV / portfolio and a short note on why this slate matches what you want to build. We read every message.",
+      "Email contact@redpad.games with your CV / portfolio and a short note on why this slate matches what you want to build. We read every message.",
   },
   {
     step: "02",
@@ -60,13 +60,15 @@ const PROCESS = [
   },
 ];
 
+// Kept generic by design — exact perks vary by role, country, and tier.
+// Specifics are confirmed during the offer stage.
 const BENEFITS = [
-  "Remote-first within compatible time zones",
-  "Hardware budget — pick your own gear",
-  "Annual learning budget",
-  "Generous PTO + flexible holidays",
-  "Health insurance (entity-dependent)",
-  "RPGC token equity for long-term hires",
+  "Compensation benchmarked to senior craft, not headcount",
+  "Hybrid working — onsite at Zurich / Almaty hubs or remote with overlap",
+  "Hardware appropriate to your craft",
+  "Time off that matches local holidays + the studio's release rhythm",
+  "Health and tax cover per the entity that hires you",
+  "Direct line to the founders on every offer",
 ];
 
 export default function CareersPage() {
@@ -223,13 +225,13 @@ export default function CareersPage() {
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">
             <MagneticButton strength={8} className="w-full sm:w-auto">
               <ButtonLink
-                href="mailto:careers@redpad.games"
+                href="mailto:contact@redpad.games?subject=%5BRedPad%5D%20Careers%20%E2%80%94%20application"
                 variant="primary"
                 size="lg"
                 external
                 className="w-full sm:w-auto"
               >
-                careers@redpad.games
+                contact@redpad.games
               </ButtonLink>
             </MagneticButton>
             <MagneticButton strength={8} className="w-full sm:w-auto">

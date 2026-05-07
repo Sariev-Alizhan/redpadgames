@@ -95,7 +95,7 @@ const SECTIONS = [
       },
       {
         q: "How do I reach press / business?",
-        a: "press@redpad.games for media, biz@redpad.games for partnerships, careers@redpad.games for hiring, contact@redpad.games for everything else.",
+        a: "All inquiries route through contact@redpad.games — add a tag in the subject line ([Press], [Business], [Careers]) and we'll route internally. Faster than chasing role-specific aliases.",
       },
     ],
   },

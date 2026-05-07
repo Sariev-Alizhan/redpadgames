@@ -105,7 +105,7 @@ export default function CookiePolicyPage() {
 
       <h2>Contact</h2>
       <p>
-        Cookie questions: <a href="mailto:privacy@redpad.games">privacy@redpad.games</a>.
+        Cookie questions: <a href="mailto:contact@redpad.games?subject=%5BRedPad%5D%20Privacy">contact@redpad.games</a>.
         See also <a href="/privacy-policy">Privacy Policy</a>.
       </p>
     </LegalLayout>

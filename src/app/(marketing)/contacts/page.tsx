@@ -10,26 +10,33 @@ export const metadata: Metadata = {
     "Press, business, careers, and player support — every way to reach RedPad Games.",
 };
 
+// All contact lanes route through the studio's verified public address
+// contact@redpad.games. Each lane includes a subject hint so we can route
+// internally. Adding press@ / biz@ / careers@ aliases is on the IT roadmap.
 const CONTACT_LANES = [
   {
     label: "General",
     email: "contact@redpad.games",
+    subject: "General",
     blurb: "Anything that doesn't fit a more specific lane.",
   },
   {
     label: "Press / Media",
-    email: "press@redpad.games",
+    email: "contact@redpad.games",
+    subject: "Press inquiry",
     blurb: "Interviews, reviews, asset requests. We aim to respond within 48 hours.",
   },
   {
     label: "Business / Partnerships",
-    email: "biz@redpad.games",
+    email: "contact@redpad.games",
+    subject: "Business inquiry",
     blurb: "Publishing, distribution, infrastructure, sponsorship.",
   },
   {
     label: "Careers",
-    email: "careers@redpad.games",
-    blurb: "Open roles + speculative applications welcome.",
+    email: "contact@redpad.games",
+    subject: "Careers — application",
+    blurb: "Open roles and speculative applications. Include a CV / portfolio.",
   },
 ];
 
@@ -58,7 +65,7 @@ export default function ContactsPage() {
                     {lane.label}
                   </p>
                   <a
-                    href={`mailto:${lane.email}`}
+                    href={`mailto:${lane.email}?subject=${encodeURIComponent(`[RedPad] ${lane.subject}`)}`}
                     data-cursor="hover"
                     className="mt-4 inline-block font-display font-black tracking-tight text-text transition-colors hover:text-accent text-[clamp(1.25rem,2.5vw,2rem)]"
                   >
