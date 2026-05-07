@@ -43,8 +43,8 @@ export function NewsTeaserSection() {
               }}
               className="mt-8 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
             >
-              From the{" "}
-              <span className="font-serif italic font-normal text-accent">studio</span>.
+              Dispatches from{" "}
+              <span className="font-serif italic font-normal text-accent">the studio</span>.
             </motion.h2>
           </div>
 
