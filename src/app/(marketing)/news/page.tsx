@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { news } from "@/content/news";
 import { Container } from "@/components/ui/Container";
+import { NewsFilteredGrid } from "@/components/NewsFilteredGrid";
 
 export const metadata: Metadata = {
   title: "News",
@@ -67,41 +68,8 @@ export default function NewsIndexPage() {
           </div>
         </Link>
 
-        {/* Rest */}
-        <ul className="mt-16 grid auto-rows-fr gap-8 pb-32 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((article) => (
-            <li key={article.slug} className="h-full">
-              <Link
-                href={`/news/${article.slug}`}
-                data-cursor="hover"
-                className="group flex h-full flex-col overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={article.cover}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-cinematic ease-expo-out group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 font-mono text-caption uppercase tracking-[0.18em] text-text-faint">
-                    <span className="text-accent">{article.category}</span>
-                    <span aria-hidden>·</span>
-                    <time dateTime={article.date}>{formatDate(article.date)}</time>
-                  </div>
-                  <h3 className="mt-4 font-display text-heading-md tracking-tight text-text transition-colors group-hover:text-accent">
-                    {article.title}
-                  </h3>
-                  <p className="mt-3 line-clamp-3 text-body-md text-text-muted">
-                    {article.excerpt}
-                  </p>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* Rest with category filter pills */}
+        <NewsFilteredGrid articles={rest} />
       </Container>
     </main>
   );

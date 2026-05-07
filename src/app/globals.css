@@ -41,6 +41,16 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Native anchor smooth-scroll. Lenis takes over for free-scroll on
+     desktop; this is the fallback + handles in-page #hash navigation. */
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion: kill the smooth scroll for users who asked. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Long-form text wrap balance for headlines on browsers that support it. */

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
+import { NotFoundSuggest } from "@/components/NotFoundSuggest";
 
 export default function NotFound() {
   return (
@@ -48,6 +49,8 @@ export default function NotFound() {
           Enter Dustland
         </ButtonLink>
       </div>
+
+      <NotFoundSuggest />
 
       <ul className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-caption uppercase tracking-[0.25em] text-text-faint">
         <li>

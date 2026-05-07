@@ -18,6 +18,7 @@ import {
 } from "@/components/effects";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CommandPalette } from "@/components/CommandPalette";
 
 export const metadata: Metadata = baseMetadata;
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Cursor />
         <MusicPlayer />
         <CookieBanner />
+        <CommandPalette />
         <LoadingScreen />
         <Analytics />
         <SpeedInsights />

@@ -174,10 +174,15 @@ export function VideoGameJsonLd({
   game,
   siteUrl,
   trailerUrl,
+  rating,
 }: {
   game: Game;
   siteUrl: string;
   trailerUrl?: string;
+  /** Snapshot from Steam (Mixed 69% across ~101 reviews → 3.45/5).
+   *  Pass a fresh value when scraping Steam in CI; for now this is hardcoded
+   *  on a per-game basis at the call site. */
+  rating?: { value: number; count: number; bestRating?: number };
 }) {
   return (
     <JsonLd
@@ -190,7 +195,26 @@ export function VideoGameJsonLd({
         gamePlatform: game.platforms,
         applicationCategory: "Game",
         publisher: { "@type": "Organization", name: "RedPad Games", url: siteUrl },
-        ...(trailerUrl ? { trailer: { "@type": "VideoObject", name: `${game.title} trailer`, embedUrl: trailerUrl } } : {}),
+        ...(trailerUrl
+          ? {
+              trailer: {
+                "@type": "VideoObject",
+                name: `${game.title} trailer`,
+                embedUrl: trailerUrl,
+              },
+            }
+          : {}),
+        ...(rating
+          ? {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: rating.value,
+                reviewCount: rating.count,
+                bestRating: rating.bestRating ?? 5,
+                worstRating: 1,
+              },
+            }
+          : {}),
       }}
     />
   );

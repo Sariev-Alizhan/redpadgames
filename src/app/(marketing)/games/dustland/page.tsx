@@ -75,6 +75,10 @@ export default function DustlandPage() {
         game={dustland}
         siteUrl={SITE_URL}
         trailerUrl={`https://www.youtube.com/embed/${TRAILER_YOUTUBE_ID}`}
+        // Snapshot from Steam app 1459630 ('Mixed', 69% positive across
+        // 101+ reviews ≈ 3.45/5). Refresh when reviewing the page or
+        // post-launch QA pass.
+        rating={{ value: 3.45, count: 101 }}
       />
       <BreadcrumbJsonLd
         siteUrl={SITE_URL}

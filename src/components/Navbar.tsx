@@ -2,10 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "@/components/ui/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/effects";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -113,55 +114,85 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile drawer */}
-      <motion.div
-        initial={false}
-        animate={open ? "open" : "closed"}
-        variants={{
-          open: { height: "auto", opacity: 1 },
-          closed: { height: 0, opacity: 0 },
-        }}
-        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden border-t border-divider/40 bg-bg/95 backdrop-blur md:hidden"
-      >
-        <ul className="flex flex-col gap-1 px-6 py-6">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              {link.external ? (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleClose}
-                  className="flex items-center justify-between py-3 font-display text-heading-sm text-text"
+      {/* Mobile menu — full-screen overlay with big magnetic links and the
+          full social roster, plus the outline wordmark at the bottom edge. */}
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[70] flex flex-col bg-bg/95 px-6 pb-10 pt-24 backdrop-blur md:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+          >
+            <ul className="flex flex-1 flex-col justify-center gap-2">
+              {NAV_LINKS.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.05, duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {link.label}
-                  <span aria-hidden className="text-body-sm opacity-50">↗</span>
-                </a>
-              ) : (
-                <Link
-                  href={link.href}
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleClose}
+                      className="flex items-baseline justify-between gap-4 py-2 font-display font-black tracking-[-0.03em] text-text leading-none text-[clamp(2.5rem,12vw,5rem)]"
+                    >
+                      <span>{link.label}</span>
+                      <span aria-hidden className="text-body-sm opacity-40">↗</span>
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={handleClose}
+                      className="block py-2 font-display font-black tracking-[-0.03em] text-text leading-none text-[clamp(2.5rem,12vw,5rem)]"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </motion.li>
+              ))}
+              <motion.li
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 + NAV_LINKS.length * 0.05, duration: 0.32 }}
+                className="mt-6"
+              >
+                <ButtonLink
+                  href="/games/dustland"
+                  variant="primary"
+                  size="lg"
                   onClick={handleClose}
-                  className="block py-3 font-display text-heading-sm text-text"
+                  className="w-full"
                 >
-                  {link.label}
-                </Link>
-              )}
-            </li>
-          ))}
-          <li className="mt-3">
-            <ButtonLink
-              href="/games/dustland"
-              variant="primary"
-              size="md"
-              onClick={handleClose}
-              className="w-full"
+                  Play Dustland
+                </ButtonLink>
+              </motion.li>
+            </ul>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="mt-10 border-t border-divider/40 pt-6"
             >
-              Play Dustland
-            </ButtonLink>
-          </li>
-        </ul>
-      </motion.div>
+              <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-faint">
+                Community
+              </p>
+              <div className="mt-4">
+                <SocialIcons />
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }

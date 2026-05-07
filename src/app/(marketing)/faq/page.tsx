@@ -104,6 +104,9 @@ const SECTIONS = [
 // Flatten all sections into a single Q&A list for the FAQPage schema.
 const ALL_QA = SECTIONS.flatMap((s) => s.items);
 
+// Stable kebab-case anchor for each section heading so links survive copy/share.
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 export default function FaqPage() {
   return (
     <main className="relative bg-bg pt-32 md:pt-40">
@@ -121,10 +124,31 @@ export default function FaqPage() {
           isn&apos;t here, write us at <a className="text-text underline underline-offset-4 hover:text-accent" href="mailto:contact@redpad.games">contact@redpad.games</a>.
         </p>
 
+        {/* Section TOC — anchor links into each section heading. Smooth-scroll
+            via CSS scroll-behavior on the html element (set in globals.css). */}
+        <nav
+          aria-label="Section navigation"
+          className="mt-12 flex flex-wrap gap-2"
+        >
+          {SECTIONS.map((s) => (
+            <a
+              key={s.title}
+              href={`#${slug(s.title)}`}
+              data-cursor="hover"
+              className="inline-flex items-center gap-2 rounded-full border border-divider px-4 py-2 font-mono text-caption uppercase tracking-[0.2em] text-text-muted transition-colors hover:border-accent/40 hover:text-text"
+            >
+              <span>{s.title}</span>
+              <span className="tabular-nums text-[10px] text-text-faint">
+                {s.items.length}
+              </span>
+            </a>
+          ))}
+        </nav>
+
         <div className="mt-16 space-y-16 pb-32">
           {SECTIONS.map((section, i) => (
             <Reveal key={section.title} delayMs={i * 60}>
-              <section>
+              <section id={slug(section.title)} className="scroll-mt-24">
                 <h2 className="font-display font-black tracking-tight text-text leading-tight text-[clamp(1.75rem,4vw,3rem)]">
                   {section.title}
                 </h2>
