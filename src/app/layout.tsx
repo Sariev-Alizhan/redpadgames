@@ -8,6 +8,7 @@ import { SharedCanvas } from "@/components/three/SharedCanvas";
 import { SceneControllerProvider } from "@/components/three/SceneController";
 import { baseMetadata } from "@/lib/seo";
 import { display, sans, mono, serif } from "./fonts";
+import { Cursor, GrainOverlay } from "@/components/effects";
 
 export const metadata: Metadata = baseMetadata;
 
@@ -26,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="relative z-10">{children}</div>
           </SmoothScrollProvider>
         </SceneControllerProvider>
+        <GrainOverlay />
+        <Cursor />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -20,6 +20,32 @@ body {
   border-radius: var(--radius-sm);
 }
 
+/* Custom cursor — only kicks in on fine-pointer devices.
+   Cursor.tsx adds .cursor-on to <html> when active. */
+html.cursor-on,
+html.cursor-on body {
+  cursor: none;
+}
+html.cursor-on a,
+html.cursor-on button,
+html.cursor-on [role="button"],
+html.cursor-on input,
+html.cursor-on label,
+html.cursor-on select,
+html.cursor-on textarea,
+html.cursor-on [data-cursor="hover"] {
+  cursor: none;
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-element {
+    display: none !important;
+  }
+  html,
+  body {
+    cursor: auto;
+  }
+}
+
 /* Lenis hooks — required for the smooth scroll provider */
 html.lenis,
 html.lenis body {
