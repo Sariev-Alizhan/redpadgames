@@ -77,7 +77,7 @@ export function NewsTeaserSection() {
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover transition-transform duration-cinematic ease-expo-out group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-cinematic ease-expo-out motion-safe:animate-kenburns group-hover:scale-[1.03]"
                 />
                 <div
                   aria-hidden

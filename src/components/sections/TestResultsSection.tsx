@@ -109,7 +109,7 @@ export function TestResultsSection() {
               className="border-l border-divider pl-6"
             >
               <dt className="sr-only">{r.label}</dt>
-              <dd className="font-display font-black tracking-tight leading-none text-text text-[clamp(2.5rem,5.5vw,5rem)]">
+              <dd className="font-display font-black tracking-tight leading-[0.95] text-text text-[clamp(2rem,4.5vw,4rem)]">
                 <NumberCounter
                   to={r.value}
                   decimals={r.decimals ?? 0}

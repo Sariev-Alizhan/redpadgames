@@ -52,15 +52,18 @@ export function HeroSection() {
         className="absolute inset-0 -z-20 hidden size-full object-cover md:block"
       />
 
-      {/* Mobile: static image — saves battery, avoids large download on cellular */}
-      <Image
-        src={POSTER_SRC}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover object-center md:hidden"
-      />
+      {/* Mobile: static image with subtle Ken-Burns drift — keeps the bg from
+          feeling dead without spinning up a video on cellular. */}
+      <div className="absolute inset-0 -z-20 overflow-hidden md:hidden">
+        <Image
+          src={POSTER_SRC}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center motion-safe:animate-kenburns"
+        />
+      </div>
 
       {/* Vignette + gradient stack */}
       <div

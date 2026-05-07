@@ -36,8 +36,9 @@ export function SocialIcons({
   className,
   variant = "default",
 }: SocialIconsProps) {
-  const buttonSize =
-    variant === "lg" ? "size-12" : "size-10";
+  // 44px is Apple HIG / iOS minimum touch target. Default keeps feet-on-glass
+  // safe; the lg variant goes bigger for the CTA section row.
+  const buttonSize = variant === "lg" ? "size-12" : "size-11";
 
   return (
     <ul className={cn("flex flex-wrap gap-3", className)}>

@@ -68,13 +68,13 @@ export default function NewsIndexPage() {
         </Link>
 
         {/* Rest */}
-        <ul className="mt-16 grid gap-8 pb-32 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid auto-rows-fr gap-8 pb-32 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((article) => (
-            <li key={article.slug}>
+            <li key={article.slug} className="h-full">
               <Link
                 href={`/news/${article.slug}`}
                 data-cursor="hover"
-                className="group block h-full overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
+                className="group flex h-full flex-col overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image

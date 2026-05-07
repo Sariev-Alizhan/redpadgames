@@ -168,12 +168,12 @@ function CreditsList({
               transition: { duration: reduce ? 0 : sec(durations.base), ease: easings.expoOut },
             },
           }}
-          className="group flex items-baseline justify-between gap-6 border-b border-divider/40 py-4 transition-colors hover:border-accent/40"
+          className="group flex flex-col items-start gap-1 border-b border-divider/40 py-4 transition-colors hover:border-accent/40 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
         >
           <span className="font-display text-heading-sm font-semibold tracking-tight text-text transition-colors group-hover:text-accent">
             {person.name}
           </span>
-          <span className="shrink-0 text-right font-mono text-caption uppercase tracking-[0.18em] text-text-faint">
+          <span className="font-mono text-caption uppercase tracking-[0.18em] text-text-faint sm:shrink-0 sm:text-right">
             {person.role}
           </span>
         </motion.li>

@@ -103,13 +103,13 @@ export default async function NewsArticlePage({
             <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-faint">
               Read next
             </p>
-            <ul className="mt-6 grid gap-6 md:grid-cols-2">
+            <ul className="mt-6 grid gap-6 md:grid-cols-2 md:auto-rows-fr">
               {related.map((r) => (
-                <li key={r.slug}>
+                <li key={r.slug} className="h-full">
                   <Link
                     href={`/news/${r.slug}`}
                     data-cursor="hover"
-                    className="group block overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
+                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-divider bg-bg-elevated transition-colors hover:border-accent/40"
                   >
                     <div className="relative aspect-[16/9] overflow-hidden">
                       <Image

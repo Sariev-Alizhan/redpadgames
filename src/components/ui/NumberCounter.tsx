@@ -60,8 +60,12 @@ export function NumberCounter({
       })
     : value.toFixed(decimals);
 
+  // We only enforce tabular-nums (so digits stay column-aligned during the
+  // count-up). Font choice belongs to the caller — early versions defaulted
+  // to font-mono which made big stat numbers (Inter-display H2 contexts)
+  // overflow their column with the wider mono glyphs.
   return (
-    <span ref={ref} className={cn("font-mono tabular-nums", className)} {...props}>
+    <span ref={ref} className={cn("tabular-nums", className)} {...props}>
       {formatted}
       {suffix}
     </span>
