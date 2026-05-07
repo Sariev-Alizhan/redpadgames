@@ -5,6 +5,13 @@ import { Container } from "@/components/ui/Container";
 import { Tag } from "@/components/ui/Tag";
 import { Reveal } from "@/components/effects";
 import { games } from "@/content/games";
+import { ItemListJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 export const metadata: Metadata = {
   title: "Games",
@@ -15,6 +22,18 @@ export const metadata: Metadata = {
 export default function GamesIndexPage() {
   return (
     <main className="relative bg-bg pt-32 md:pt-40">
+      <ItemListJsonLd
+        siteUrl={SITE_URL}
+        name="RedPad Games — Slate"
+        items={games.map((g) => ({ name: g.title, url: `/games/${g.slug}` }))}
+      />
+      <BreadcrumbJsonLd
+        siteUrl={SITE_URL}
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Games", url: "/games" },
+        ]}
+      />
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
           The Slate

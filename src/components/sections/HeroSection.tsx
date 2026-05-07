@@ -28,6 +28,7 @@ const MARQUEE_TOKENS = [
 export function HeroSection() {
   const setScene = useSceneSetter();
   const reduce = useReducedMotion();
+  const bgRef = React.useRef<HTMLDivElement>(null);
 
   // Hero now owns a static cinematic background — the SharedCanvas stays idle
   // here so the video loop reads cleanly. Subsequent sections (StudioStatement,
@@ -36,6 +37,34 @@ export function HeroSection() {
     setScene({ current: "idle", progress: 0 });
   }, [setScene]);
 
+  // Scroll parallax — desktop only, reduced-motion aware. Translates the
+  // background up at 0.4× the page scroll for an inertial 'depth' feel.
+  // requestAnimationFrame-batched so it stays smooth on slow CPUs.
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (reduce) return;
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    if (isCoarse) return;
+
+    let raf = 0;
+    const tick = () => {
+      const node = bgRef.current;
+      if (!node) return;
+      const offset = Math.min(window.scrollY, window.innerHeight) * 0.4;
+      node.style.transform = `translate3d(0, ${offset}px, 0)`;
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [reduce]);
+
   return (
     <section
       id="hero"
@@ -43,8 +72,10 @@ export function HeroSection() {
       className="relative isolate flex min-h-[100svh] flex-col overflow-hidden"
     >
       {/* Real Dustland key art behind the hero. Kenburns drift gives motion
-          without the bandwidth cost of a video loop. Same on every viewport. */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
+          without the bandwidth cost of a video loop. Same on every viewport.
+          Parent ref takes the parallax translate so kenburns animation on
+          the inner Image isn't fighting two transform sources. */}
+      <div ref={bgRef} className="absolute inset-0 -z-20 overflow-hidden will-change-transform">
         <Image
           src={HERO_IMAGE}
           alt=""

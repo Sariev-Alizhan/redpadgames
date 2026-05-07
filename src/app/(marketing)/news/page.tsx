@@ -4,6 +4,13 @@ import type { Metadata } from "next";
 import { news } from "@/content/news";
 import { Container } from "@/components/ui/Container";
 import { NewsFilteredGrid } from "@/components/NewsFilteredGrid";
+import { ItemListJsonLd, BreadcrumbJsonLd } from "@/components/JsonLd";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://redpad-website.vercel.app");
 
 export const metadata: Metadata = {
   title: "News",
@@ -18,6 +25,18 @@ export default function NewsIndexPage() {
 
   return (
     <main className="relative bg-bg pt-32 md:pt-40">
+      <ItemListJsonLd
+        siteUrl={SITE_URL}
+        name="RedPad Games — News"
+        items={sorted.map((n) => ({ name: n.title, url: `/news/${n.slug}` }))}
+      />
+      <BreadcrumbJsonLd
+        siteUrl={SITE_URL}
+        items={[
+          { name: "Home", url: "/" },
+          { name: "News", url: "/news" },
+        ]}
+      />
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
           News &amp; Devlogs

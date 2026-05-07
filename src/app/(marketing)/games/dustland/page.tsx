@@ -214,12 +214,14 @@ export default function DustlandPage() {
           </Reveal>
         </Container>
 
-        <div className="mt-16 overflow-x-auto pb-8 [scrollbar-width:thin]">
+        <div className="mt-16 snap-x snap-mandatory overflow-x-auto pb-8 [scrollbar-width:thin]">
           <ul className="flex gap-4 px-6 md:px-12 lg:px-20">
             {(dustland.gallery ?? []).map((src, i) => (
               <li
                 key={src}
-                className="relative aspect-video w-[80vw] shrink-0 overflow-hidden rounded-lg border border-divider sm:w-[60vw] md:w-[44vw] lg:w-[32vw]"
+                // snap-start clean-pages each screenshot when the user
+                // flicks/scrolls horizontally on touch / trackpad.
+                className="relative aspect-video w-[80vw] shrink-0 snap-start overflow-hidden rounded-lg border border-divider sm:w-[60vw] md:w-[44vw] lg:w-[32vw]"
               >
                 <Image
                   src={src}

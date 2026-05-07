@@ -56,6 +56,37 @@ export function OrganizationJsonLd({ siteUrl }: { siteUrl: string }) {
   );
 }
 
+/** schema.org ItemList — for catalog / index pages (games, news).
+ *  Google may surface as a carousel of items in SERP. Items are an ordered
+ *  list of URLs with name + position. */
+export function ItemListJsonLd({
+  items,
+  siteUrl,
+  name,
+}: {
+  items: ReadonlyArray<{ name: string; url: string }>;
+  siteUrl: string;
+  name: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: items.length,
+        itemListElement: items.map((item, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: item.name,
+          url: `${siteUrl}${item.url}`,
+        })),
+      }}
+    />
+  );
+}
+
 /** schema.org BreadcrumbList — gives Google a navigation hierarchy to
  *  display under the result. Pass an ordered list from root to current. */
 export function BreadcrumbJsonLd({
