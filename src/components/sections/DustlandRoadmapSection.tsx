@@ -71,7 +71,7 @@ export function DustlandRoadmapSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
         >
           A ten-year{" "}
-          <span className="font-serif italic font-normal text-accent">horizon</span>.
+          <span className="font-sans italic font-bold text-accent">horizon</span>.
         </motion.h2>
       </Container>
 

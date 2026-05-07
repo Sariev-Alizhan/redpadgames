@@ -40,12 +40,16 @@
   --color-data-cyan: #3da9ff;
 
   /* ===== Fonts (set by next/font on <html>) =====
-     One Inter face powers both body and display — heavy weights on H1/H2
-     give the editorial feel without pulling a second font file. */
+     One Inter face powers everything: body, display (heavy weights), and
+     accent (italic). Single-family is intentional — premium gaming studios
+     (Bungie / Larian / Riot / CDPR / FromSoftware) lean on a unified sans
+     with weight + style emphasis rather than a serif italic accent that
+     reads 'lifestyle'. font-serif is aliased to sans-italic so legacy
+     `font-serif italic` markup keeps working without re-styling every site. */
   --font-sans: var(--font-sans);
   --font-display: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
+  --font-serif: var(--font-sans);
 
   /* ===== Type scale ===== */
   --text-display-xl: 6rem;

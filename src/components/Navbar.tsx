@@ -9,10 +9,10 @@ import { MagneticButton } from "@/components/effects";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/games", label: "Games" },
-  { href: "/news", label: "News" },
-  { href: "/about", label: "Studio" },
-  { href: "/careers", label: "Careers" },
+  { href: "/games", label: "Games", external: false },
+  { href: "/news", label: "News", external: false },
+  { href: "https://redpad.games/about", label: "Studio", external: true },
+  { href: "https://redpad.games/careers", label: "Careers", external: true },
 ] as const;
 
 export function Navbar() {
@@ -49,13 +49,26 @@ export function Navbar() {
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <MagneticButton strength={10}>
-                <Link
-                  href={link.href}
-                  data-cursor="hover"
-                  className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted transition-colors hover:text-text"
-                >
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor="hover"
+                    className="inline-flex items-center gap-1.5 font-mono text-caption uppercase tracking-[0.25em] text-text-muted transition-colors hover:text-text"
+                  >
+                    {link.label}
+                    <span aria-hidden className="text-[0.7em] opacity-50">↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    data-cursor="hover"
+                    className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted transition-colors hover:text-text"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </MagneticButton>
             </li>
           ))}
@@ -114,13 +127,26 @@ export function Navbar() {
         <ul className="flex flex-col gap-1 px-6 py-6">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={handleClose}
-                className="block py-3 font-display text-heading-sm text-text"
-              >
-                {link.label}
-              </Link>
+              {link.external ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleClose}
+                  className="flex items-center justify-between py-3 font-display text-heading-sm text-text"
+                >
+                  {link.label}
+                  <span aria-hidden className="text-body-sm opacity-50">↗</span>
+                </a>
+              ) : (
+                <Link
+                  href={link.href}
+                  onClick={handleClose}
+                  className="block py-3 font-display text-heading-sm text-text"
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
           <li className="mt-3">

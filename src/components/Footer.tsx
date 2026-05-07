@@ -4,29 +4,34 @@ import { SocialIcons } from "@/components/ui/SocialIcons";
 
 const LOCATIONS = ["Zurich HQ", "Almaty Dev", "Delaware US", "Grand Cayman"];
 
-const COL_STUDIO = [
-  { href: "/about", label: "About Us" },
-  { href: "/careers", label: "Careers" },
-  { href: "/news", label: "News" },
-  { href: "/contacts", label: "Contacts" },
-] as const;
+// Pages flagged `external: true` aren't built on this site yet — we point
+// them at the corresponding redpad.games surface so the footer is fully
+// functional. When we ship the local version, drop the `external` flag.
+type FooterLink = { href: string; label: string; external?: boolean };
 
-const COL_GAMES = [
+const COL_STUDIO: ReadonlyArray<FooterLink> = [
+  { href: "https://redpad.games/about", label: "About Us", external: true },
+  { href: "https://redpad.games/careers", label: "Careers", external: true },
+  { href: "/news", label: "News" },
+  { href: "https://redpad.games/contact", label: "Contacts", external: true },
+];
+
+const COL_GAMES: ReadonlyArray<FooterLink> = [
   { href: "/games/dustland", label: "Dustland" },
   { href: "/games/wartide-worlds", label: "Wartide Worlds" },
-  { href: "/token", label: "RPGC Token" },
-] as const;
+  { href: "https://redpad.games/token", label: "RPGC Token", external: true },
+];
 
-const COL_SUPPORT = [
-  { href: "/support", label: "Help Center" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/forum", label: "Forum" },
-] as const;
+const COL_SUPPORT: ReadonlyArray<FooterLink> = [
+  { href: "https://redpad.games/support", label: "Help Center", external: true },
+  { href: "https://redpad.games/faq", label: "FAQ", external: true },
+  { href: "https://discord.gg/rbh3eEV8Ka", label: "Discord", external: true },
+];
 
-const COL_LEGAL = [
-  { href: "/privacy-policy", label: "Privacy" },
-  { href: "/cookie", label: "Cookies" },
-] as const;
+const COL_LEGAL: ReadonlyArray<FooterLink> = [
+  { href: "https://redpad.games/privacy-policy", label: "Privacy", external: true },
+  { href: "https://redpad.games/cookie-policy", label: "Cookies", external: true },
+];
 
 export function Footer() {
   return (
@@ -90,7 +95,7 @@ function FooterColumn({
   className,
 }: {
   title: string;
-  links: ReadonlyArray<{ href: string; label: string }>;
+  links: ReadonlyArray<FooterLink>;
   className?: string;
 }) {
   return (
@@ -99,17 +104,32 @@ function FooterColumn({
         {title}
       </h4>
       <ul className="space-y-3 text-body-md text-text-muted">
-        {links.map((l) => (
-          <li key={l.href}>
-            <Link
-              href={l.href}
-              data-cursor="hover"
-              className="transition-colors hover:text-accent"
-            >
-              {l.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((l) =>
+          l.external ? (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-1.5 transition-colors hover:text-accent"
+              >
+                {l.label}
+                <span aria-hidden className="text-[0.7em] opacity-50">↗</span>
+              </a>
+            </li>
+          ) : (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                data-cursor="hover"
+                className="transition-colors hover:text-accent"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ),
+        )}
       </ul>
     </div>
   );

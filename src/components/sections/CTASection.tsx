@@ -56,7 +56,7 @@ export function CTASection() {
           className="mx-auto mt-8 max-w-5xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,9vw,8.5rem)]"
         >
           Step into{" "}
-          <span className="font-serif italic font-normal text-accent">
+          <span className="font-sans italic font-bold text-accent">
             the dust
           </span>
           .

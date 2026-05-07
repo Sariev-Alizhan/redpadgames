@@ -1,16 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Marquee } from "@/components/ui/Marquee";
-import { tierOnePartners, tierTwoPartners } from "@/content/partners";
+import { tierOnePartners, tierTwoPartners, type Partner } from "@/content/partners";
 import { sec, durations, easings } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 
 /**
- * Two-row partner marquee. Tier 1 scrolls one direction, tier 2 the other.
- * Logos are typographic by default — when /public/partners/<slug>.svg lands,
- * swap the inner span for an <Image>. This avoids broken-image rendering when
- * the SVG asset hasn't been provisioned yet.
+ * Partners section — two-row marquee. Each tier scrolls a different direction.
+ * Real brand SVGs/PNGs are rendered through next/image. Full-colour logos get
+ * a desaturate-to-white CSS filter so the entire row reads with one visual
+ * temperature on the dark site (Bungie / Larian style — sponsorship row in
+ * uniform off-white at low opacity, full opacity on hover).
  */
 export function PartnersMarqueeSection() {
   const reduce = useReducedMotion();
@@ -34,39 +37,54 @@ export function PartnersMarqueeSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2rem,6vw,4.5rem)]"
         >
           Built with the people who built{" "}
-          <span className="font-serif italic font-normal text-accent">the rails</span>.
+          <span className="font-sans italic font-bold text-accent">the rails</span>.
         </motion.h2>
+
+        <p className="mt-6 max-w-2xl text-body-md text-text-muted">
+          Cloud, GPU, distribution, payments, audits — the infrastructure
+          behind every shipping decision the studio makes.
+        </p>
       </Container>
 
-      <div className="mt-20 flex flex-col gap-6">
-        <PartnerRow names={tierOnePartners.map((p) => p.name)} reverse={false} accent />
-        <PartnerRow names={tierTwoPartners.map((p) => p.name)} reverse />
+      <div className="mt-16 flex flex-col gap-8">
+        <PartnerRow partners={tierOnePartners} />
+        <PartnerRow partners={tierTwoPartners} reverse />
       </div>
     </section>
   );
 }
 
 function PartnerRow({
-  names,
-  reverse,
-  accent,
+  partners,
+  reverse = false,
 }: {
-  names: string[];
+  partners: Partner[];
   reverse?: boolean;
-  accent?: boolean;
 }) {
   return (
     <Marquee reverse={reverse} pauseOnHover>
-      {names.map((name) => (
-        <span
-          key={name}
-          className={
-            "shrink-0 font-display font-bold uppercase tracking-[0.18em] text-text-muted text-[clamp(1.75rem,3vw,2.75rem)] transition-colors hover:text-text " +
-            (accent ? "" : "opacity-80")
-          }
+      {partners.map((p) => (
+        <a
+          key={p.name}
+          href={p.url ?? "#"}
+          target={p.url ? "_blank" : undefined}
+          rel={p.url ? "noopener noreferrer" : undefined}
+          aria-label={`${p.name} — ${p.role}`}
+          data-cursor="hover"
+          className="group flex h-16 shrink-0 items-center justify-center px-8 opacity-60 transition-opacity duration-300 hover:opacity-100 md:h-20 md:px-10"
         >
-          {name}
-        </span>
+          <Image
+            src={p.logo}
+            alt={p.name}
+            width={160}
+            height={52}
+            className={cn(
+              "h-8 w-auto md:h-10",
+              !p.monochromeReady &&
+                "brightness-0 invert opacity-90 group-hover:opacity-100",
+            )}
+          />
+        </a>
       ))}
     </Marquee>
   );

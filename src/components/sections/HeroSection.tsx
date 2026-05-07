@@ -9,9 +9,10 @@ import { MagneticButton } from "@/components/effects";
 import { useSceneSetter } from "@/components/three/SceneController";
 import { sec, durations, easings } from "@/lib/motion";
 
-// Higgsfield "two suns" assets — placed by /Sort and place Higgsfield visuals.
-const VIDEO_SRC = "/hero/hero-loop.mp4";
-const POSTER_SRC = "/hero/hero-bg.jpg";
+// Hero background uses the real Dustland page-bg key art (eclipse + character +
+// ruins). User explicitly asked to drop the video loop and lead with the game's
+// own art, so the same Image renders on every viewport with a kenburns drift.
+const HERO_IMAGE = "/hero/hero-bg.jpg";
 
 const MARQUEE_TOKENS = [
   "Zurich HQ",
@@ -39,24 +40,11 @@ export function HeroSection() {
       aria-label="Hero — RedPad Games studio"
       className="relative isolate flex min-h-[100svh] flex-col overflow-hidden"
     >
-      {/* Desktop / tablet: video loop with poster fallback */}
-      <video
-        src={VIDEO_SRC}
-        poster={POSTER_SRC}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        aria-hidden
-        className="absolute inset-0 -z-20 hidden size-full object-cover md:block"
-      />
-
-      {/* Mobile: static image with subtle Ken-Burns drift — keeps the bg from
-          feeling dead without spinning up a video on cellular. */}
-      <div className="absolute inset-0 -z-20 overflow-hidden md:hidden">
+      {/* Real Dustland key art behind the hero. Kenburns drift gives motion
+          without the bandwidth cost of a video loop. Same on every viewport. */}
+      <div className="absolute inset-0 -z-20 overflow-hidden">
         <Image
-          src={POSTER_SRC}
+          src={HERO_IMAGE}
           alt=""
           fill
           priority
@@ -114,7 +102,7 @@ export function HeroSection() {
             className="block"
           >
             between{" "}
-            <span className="font-serif italic font-normal text-accent">
+            <span className="font-sans italic font-bold text-accent">
               two suns
             </span>
             .

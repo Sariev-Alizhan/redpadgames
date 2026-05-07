@@ -119,7 +119,7 @@ export default function DustlandPage() {
               <Reveal>
                 <h2 className="mt-6 font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,5.5vw,4.5rem)]">
                   A world that{" "}
-                  <span className="font-serif italic font-normal text-accent">remembers</span>{" "}
+                  <span className="font-sans italic font-bold text-accent">remembers</span>{" "}
                   every choice you make.
                 </h2>
               </Reveal>
@@ -145,7 +145,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               Six pillars,{" "}
-              <span className="font-serif italic font-normal text-accent">
+              <span className="font-sans italic font-bold text-accent">
                 one feedback loop
               </span>.
             </h2>
@@ -177,7 +177,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               Six frames from{" "}
-              <span className="font-serif italic font-normal text-accent">live build</span>.
+              <span className="font-sans italic font-bold text-accent">live build</span>.
             </h2>
           </Reveal>
         </Container>
@@ -211,7 +211,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mt-6 max-w-3xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)]">
               A ten-year{" "}
-              <span className="font-serif italic font-normal text-accent">horizon</span>.
+              <span className="font-sans italic font-bold text-accent">horizon</span>.
             </h2>
           </Reveal>
           <ol className="mt-16 grid auto-rows-fr gap-6 lg:grid-cols-3">
@@ -294,7 +294,7 @@ export default function DustlandPage() {
           <Reveal>
             <h2 className="mx-auto max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,8vw,7rem)]">
               Step into{" "}
-              <span className="font-serif italic font-normal text-accent">the dust</span>.
+              <span className="font-sans italic font-bold text-accent">the dust</span>.
             </h2>
           </Reveal>
           <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">

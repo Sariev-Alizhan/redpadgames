@@ -33,7 +33,7 @@ export function FootprintSection() {
           className="mt-8 max-w-4xl font-display font-black tracking-tight text-text leading-[0.95] text-[clamp(2.25rem,7vw,5.5rem)]"
         >
           Four hubs.{" "}
-          <span className="font-serif italic font-normal text-accent">
+          <span className="font-sans italic font-bold text-accent">
             One studio.
           </span>
         </motion.h2>

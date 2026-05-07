@@ -21,7 +21,7 @@ export default function GamesIndexPage() {
         </p>
         <h1 className="mt-6 max-w-4xl font-display font-black tracking-[-0.04em] text-text leading-[0.95] text-[clamp(2.5rem,9vw,8rem)]">
           Two worlds.{" "}
-          <span className="font-serif italic font-normal text-accent">
+          <span className="font-sans italic font-bold text-accent">
             Both at full risk
           </span>
           .

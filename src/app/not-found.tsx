@@ -24,7 +24,7 @@ export default function NotFound() {
 
       <p className="mt-6 max-w-xl font-display text-text leading-tight text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight">
         You&apos;ve wandered{" "}
-        <span className="font-serif italic font-normal text-accent">
+        <span className="font-sans italic font-bold text-accent">
           beyond the dust
         </span>
         .

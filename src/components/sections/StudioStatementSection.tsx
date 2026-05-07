@@ -80,7 +80,7 @@ export function StudioStatementSection() {
 
             <h2 className="mt-6 font-display font-black tracking-[-0.03em] text-text leading-[0.95] text-[clamp(2.25rem,5.5vw,4.5rem)]">
               Independent.{" "}
-              <span className="font-serif italic font-normal text-accent">
+              <span className="font-sans italic font-bold text-accent">
                 Uncompromising.
               </span>{" "}
               Built to ship.
