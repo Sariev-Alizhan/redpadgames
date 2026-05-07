@@ -29,7 +29,7 @@ export function TeamSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          06 / The Team
+          07 / The Team
         </p>
 
         <motion.h2

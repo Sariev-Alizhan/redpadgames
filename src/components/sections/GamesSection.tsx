@@ -25,7 +25,7 @@ export function GamesSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          03 · Games
+          03 / Games
         </p>
 
         <motion.h2

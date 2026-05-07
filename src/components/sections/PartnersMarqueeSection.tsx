@@ -23,7 +23,7 @@ export function PartnersMarqueeSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          05 · Partners
+          06 / Partners
         </p>
 
         <motion.h2

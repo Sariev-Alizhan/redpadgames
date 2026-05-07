@@ -55,7 +55,7 @@ export function TestResultsSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          04 · Public test results
+          05 / Public test results
         </p>
 
         <motion.h2

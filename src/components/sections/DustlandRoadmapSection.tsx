@@ -60,7 +60,7 @@ export function DustlandRoadmapSection() {
     >
       <Container width="wide" className="lg:pt-32">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          08 · Dustland Roadmap
+          04 / Dustland Roadmap
         </p>
 
         <motion.h2

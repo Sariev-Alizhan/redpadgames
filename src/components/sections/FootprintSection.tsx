@@ -22,7 +22,7 @@ export function FootprintSection() {
     >
       <Container width="wide">
         <p className="font-mono text-caption uppercase tracking-[0.25em] text-text-muted">
-          07 · Footprint
+          08 / Footprint
         </p>
 
         <motion.h2
