@@ -1,3 +1,9 @@
 export { HeroSection } from "./HeroSection";
 export { StudioStatementSection } from "./StudioStatementSection";
+export { GamesSection } from "./GamesSection";
 export { DustlandSection } from "./DustlandSection";
+export { DustlandRoadmapSection } from "./DustlandRoadmapSection";
+export { TestResultsSection } from "./TestResultsSection";
+export { PartnersMarqueeSection } from "./PartnersMarqueeSection";
+export { TeamSection } from "./TeamSection";
+export { FootprintSection } from "./FootprintSection";

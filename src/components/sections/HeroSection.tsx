@@ -9,12 +9,12 @@ import { MagneticButton } from "@/components/effects";
 import { useSceneSetter } from "@/components/three/SceneController";
 import { sec, durations, easings } from "@/lib/motion";
 
-// Asset paths follow the brief; HeroSection falls back to the legacy still
-// when the Higgsfield set isn't yet on disk so the section keeps rendering.
-const VIDEO_SRC = "/hero/hero-loop.mp4";
-const VIDEO_FALLBACK = "/dustland/key-loop.mp4";
-const POSTER_SRC = "/hero/hero-bg.jpg";
-const POSTER_FALLBACK = "/hero/sovereign-globe.png";
+// Hero uses the existing legacy still + dustland loop until the Higgsfield
+// "two suns" assets land at /hero/hero-bg.jpg and /hero/hero-loop.mp4 — when
+// they ship, swap these two constants. Keeping the references explicit so a
+// missing file is a one-line fix, not a chase through onError handlers.
+const VIDEO_SRC = "/dustland/key-loop.mp4";
+const POSTER_SRC = "/hero/sovereign-globe.png";
 
 const MARQUEE_TOKENS = [
   "Zurich HQ",
@@ -28,8 +28,6 @@ const MARQUEE_TOKENS = [
 export function HeroSection() {
   const setScene = useSceneSetter();
   const reduce = useReducedMotion();
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const [posterErrored, setPosterErrored] = React.useState(false);
 
   // Hero now owns a static cinematic background — the SharedCanvas stays idle
   // here so the video loop reads cleanly. Subsequent sections (StudioStatement,
@@ -37,21 +35,6 @@ export function HeroSection() {
   React.useEffect(() => {
     setScene({ current: "idle", progress: 0 });
   }, [setScene]);
-
-  // If the brief-named video 404s, fall back to the existing dustland loop.
-  React.useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const onError = () => {
-      if (!v.src.endsWith(VIDEO_FALLBACK)) {
-        v.src = VIDEO_FALLBACK;
-        v.load();
-        v.play().catch(() => {});
-      }
-    };
-    v.addEventListener("error", onError);
-    return () => v.removeEventListener("error", onError);
-  }, []);
 
   return (
     <section
@@ -61,9 +44,8 @@ export function HeroSection() {
     >
       {/* Desktop / tablet: video loop with poster fallback */}
       <video
-        ref={videoRef}
         src={VIDEO_SRC}
-        poster={posterErrored ? POSTER_FALLBACK : POSTER_SRC}
+        poster={POSTER_SRC}
         autoPlay
         loop
         muted
@@ -75,12 +57,11 @@ export function HeroSection() {
 
       {/* Mobile: static image — saves battery, avoids large download on cellular */}
       <Image
-        src={posterErrored ? POSTER_FALLBACK : POSTER_SRC}
+        src={POSTER_SRC}
         alt=""
         fill
         priority
         sizes="100vw"
-        onError={() => setPosterErrored(true)}
         className="-z-20 object-cover object-center md:hidden"
       />
 
