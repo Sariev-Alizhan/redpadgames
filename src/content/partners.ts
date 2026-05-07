@@ -64,14 +64,9 @@ export const partners: Partner[] = [
     role: "Web3 infrastructure",
     url: "https://www.binance.com",
   },
-  {
-    name: "Xsolla",
-    tier: "tier-1",
-    logo: "/partners/xsolla.svg",
-    monochromeReady: false,
-    role: "Payments & monetization",
-    url: "https://xsolla.com",
-  },
+  // Xsolla dropped: their official SVG is a hot-pink solid square with a
+  // small white wordmark inside. brightness-0 invert turns it into a solid
+  // white square against the row, which read as a broken/missing logo.
 
   {
     name: "QuillAudits",
