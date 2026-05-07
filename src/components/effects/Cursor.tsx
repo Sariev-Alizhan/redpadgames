@@ -12,17 +12,19 @@ import * as React from "react";
 export function Cursor() {
   const ringRef = React.useRef<HTMLDivElement>(null);
   const dotRef = React.useRef<HTMLDivElement>(null);
-  const [enabled, setEnabled] = React.useState(false);
 
+  // Render the elements unconditionally; the global CSS rule
+  // `@media (hover: none) { .cursor-element { display: none } }` hides them
+  // on touch / coarse-pointer devices. The effect below decides whether to
+  // wire up listeners (and add the html.cursor-on class that hides the system
+  // cursor) — this avoids the React-Compiler set-state-in-effect rule.
   React.useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Touch / coarse pointer / reduced motion → no custom cursor.
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!finePointer || reduceMotion) return;
 
-    setEnabled(true);
     document.documentElement.classList.add("cursor-on");
 
     const ring = ringRef.current;
@@ -81,8 +83,6 @@ export function Cursor() {
       document.documentElement.classList.remove("cursor-on");
     };
   }, []);
-
-  if (!enabled) return null;
 
   return (
     <>
